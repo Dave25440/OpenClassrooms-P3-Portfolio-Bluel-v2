@@ -56,6 +56,23 @@ function filtersGallery() {
     }
 }
 
+// Récupération du bouton "filter0"
+const filter0 = document.getElementById("filter0");
+// Ajout d'un écouteur d'évènements de clic sur le bouton "filter0"
+filter0.addEventListener("click", function () {
+    // Ajout du filtre du tableau works dans une constante
+    const categoriesFilter = works.filter(function (object) {
+        // Transformation de l'objet Set en tableau
+        const categoriesArray = Array.from(categories);
+        // Renvoi des objets dont le nom de la catégorie est égal à la première entrée du tableau
+        return object.category.name === categoriesArray[0];
+    });
+    // Suppression du contenu du bloc "gallery"
+    document.querySelector(".gallery").innerHTML = "";
+    // Appel de la fonction worksGallery avec le paramètre filtre du tableau works
+    worksGallery(categoriesFilter);
+});
+
 // Fonction de génération de la galerie photos
 function worksGallery (works) {
     // Création du bloc "gallery"
