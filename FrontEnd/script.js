@@ -35,6 +35,13 @@ function filtersGallery() {
     filters.classList.add("filters");
     // Ajout du bloc "filters" à la section "portfolio"
     document.getElementById("portfolio").appendChild(filters);
+    // Création du bouton "Tous"
+    const filterAll = document.createElement("button");
+    filterAll.classList.add("filter");
+    filterAll.autofocus = true;
+    filterAll.innerText = "Tous";
+    // Ajout du bouton "Tous" au bloc "filters"
+    filters.appendChild(filterAll);
     // Appel de la fonction worksCategories
     worksCategories(works, categories);
     // Parcours de chaque item de l'objet categories via une boucle
