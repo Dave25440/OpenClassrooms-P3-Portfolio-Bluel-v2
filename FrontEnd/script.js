@@ -30,8 +30,11 @@ function worksCategories(works, categories) {
 
 // Fonction de génération des filtres
 function filtersGallery() {
-    // Récupération du bloc "filters"
-    const filters = document.querySelector(".filters");
+    // Création du bloc "filters"
+    const filters = document.createElement("div");
+    filters.classList.add("filters");
+    // Ajout du bloc "filters" à la section "portfolio"
+    document.getElementById("portfolio").appendChild(filters);
     // Appel de la fonction worksCategories
     worksCategories(works, categories);
     // Parcours de chaque item de l'objet categories via une boucle
@@ -48,8 +51,11 @@ function filtersGallery() {
 
 // Fonction de génération de la galerie photos
 function worksGallery (works) {
-    // Récupération du bloc "gallery"
-    const gallery = document.querySelector(".gallery");
+    // Création du bloc "gallery"
+    const gallery = document.createElement("div");
+    gallery.classList.add("gallery");
+    // Ajout du bloc "gallery" à la section "portfolio"
+    document.getElementById("portfolio").appendChild(gallery);
     // Parcours du tableau works via une boucle
     for (let i = 0; i < works.length; i++) {
         // Récupération du tableau works dans une constante
