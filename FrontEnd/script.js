@@ -29,18 +29,18 @@ function worksCategories(works, categories) {
 }
 
 // Fonction de génération des filtres
-function filtersGallery(works) {
+function filtersGallery() {
     // Récupération du bloc "filters"
     const filters = document.querySelector(".filters");
-    // Parcours des catégories du tableau works via une boucle
-    for (let i = 0; i < works.length; i++) {
-        // Récupération du tableau works dans une constante
-        const filtersTitles = works[i];
+    // Appel de la fonction worksCategories
+    worksCategories(works, categories);
+    // Parcours de chaque item de l'objet categories via une boucle
+    for (let item of categories) {
         // Création de la balise button avec la classe "filter"
         const filter = document.createElement("button");
         filter.classList.add("filter");
-        // Récupération du nom des catégories du tableau works pour la balise button
-        filter.innerText = filtersTitles.category.name;
+        // Récupération de l'item de l'objet categories pour la balise button
+        filter.innerText = item;
         // Ajout de la balise button au bloc "filters"
         filters.appendChild(filter);
     }
@@ -74,5 +74,5 @@ function worksGallery (works) {
 }
 
 // Appel des fonctions filtersGallery et worksGallery
-filtersGallery(works);
+filtersGallery();
 worksGallery(works);
