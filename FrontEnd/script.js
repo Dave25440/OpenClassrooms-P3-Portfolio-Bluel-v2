@@ -28,13 +28,19 @@ function worksCategories(works, categories) {
     }
 }
 
+// Récupération de la section "portfolio"
+const portfolio = document.getElementById("portfolio");
+// Création du bloc "gallery"
+const gallery = document.createElement("div");
+gallery.classList.add("gallery");
+// Création du bloc "filters"
+const filters = document.createElement("div");
+filters.classList.add("filters");
+
 // Fonction de génération des filtres
 function filtersGallery() {
-    // Création du bloc "filters"
-    const filters = document.createElement("div");
-    filters.classList.add("filters");
     // Ajout du bloc "filters" à la section "portfolio"
-    document.getElementById("portfolio").appendChild(filters);
+    portfolio.appendChild(filters);
     // Création du bouton "Tous"
     const filterAll = document.createElement("button");
     filterAll.classList.add("filter");
@@ -51,6 +57,8 @@ function filtersGallery() {
         filter.classList.add("filter");
         // Récupération de l'item de l'objet categories pour la balise button
         filter.innerText = item;
+        // Ajout de la balise button au bloc "filters"
+        filters.appendChild(filter);
         // Ajout d'un écouteur d'évènements de clic sur la balise button
         filter.addEventListener("click", function () {
             // Ajout du filtre du tableau works dans une constante
@@ -65,35 +73,13 @@ function filtersGallery() {
             // Appel de la fonction worksGallery avec le paramètre filtre du tableau works
             worksGallery(categoriesFilter);
         });
-        // Ajout de la balise button au bloc "filters"
-        filters.appendChild(filter);
     }
 }
 
-// Récupération du bouton "filter0"
-const filter0 = document.getElementById("filter0");
-// Ajout d'un écouteur d'évènements de clic sur le bouton "filter0"
-filter0.addEventListener("click", function () {
-    // Ajout du filtre du tableau works dans une constante
-    const categoriesFilter = works.filter(function (object) {
-        // Transformation de l'objet Set en tableau
-        const categoriesArray = Array.from(categories);
-        // Renvoi des objets dont le nom de la catégorie est égal à la première entrée du tableau
-        return object.category.name === categoriesArray[0];
-    });
-    // Suppression du contenu du bloc "gallery"
-    document.querySelector(".gallery").innerHTML = "";
-    // Appel de la fonction worksGallery avec le paramètre filtre du tableau works
-    worksGallery(categoriesFilter);
-});
-
 // Fonction de génération de la galerie photos
 function worksGallery (works) {
-    // Création du bloc "gallery"
-    const gallery = document.createElement("div");
-    gallery.classList.add("gallery");
     // Ajout du bloc "gallery" à la section "portfolio"
-    document.getElementById("portfolio").appendChild(gallery);
+    portfolio.appendChild(gallery);
     // Parcours du tableau works via une boucle
     for (let i = 0; i < works.length; i++) {
         // Récupération du tableau works dans une constante
