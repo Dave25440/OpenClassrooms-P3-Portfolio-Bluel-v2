@@ -19,24 +19,27 @@ if (works === null) {
 function worksGallery (works) {
     // Récupération du bloc "gallery"
     const gallery = document.querySelector(".gallery");
-    // Récupération du premier élément du tableau works dans une constante
-    const figure0 = works[0];
-    // Création de la balise figure
-    const figure = document.createElement("figure");
-    // Création de la balise image
-    const img = document.createElement("img");
-    // Récupération du chemin des images et du titre du work pour les attributs src et alt
-    img.src = figure0.imageUrl;
-    img.alt = figure0.title;
-    // Création de la balise figcaption
-    const figcaption = document.createElement("figcaption");
-    // Récupération du titre du work pour la balise figcaption
-    figcaption.innerText = figure0.title;
-    // Ajout de la balise figure au bloc "gallery"
-    gallery.appendChild(figure);
-    // Ajout des balises image et figcaption à la balise figure
-    figure.appendChild(img);
-    figure.appendChild(figcaption);
+    // Parcours du tableau works via une boucle
+    for (let i = 0; i < works.length; i++) {
+        // Récupération du tableau works dans une constante
+        const figures = works[i];
+        // Création de la balise figure
+        const figure = document.createElement("figure");
+        // Création de la balise image
+        const img = document.createElement("img");
+        // Récupération du chemin des images et du titre des works pour les attributs src et alt
+        img.src = figures.imageUrl;
+        img.alt = figures.title;
+        // Création de la balise figcaption
+        const figcaption = document.createElement("figcaption");
+        // Récupération du titre des works pour la balise figcaption
+        figcaption.innerText = figures.title;
+        // Ajout de la balise figure au bloc "gallery"
+        gallery.appendChild(figure);
+        // Ajout des balises image et figcaption à la balise figure
+        figure.appendChild(img);
+        figure.appendChild(figcaption);
+    }
 }
 
 worksGallery(works);
