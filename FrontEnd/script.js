@@ -42,5 +42,21 @@ function worksGallery (works) {
     }
 }
 
-// Appel de la fonction worksGallery
+// Fonction de génération des filtres
+function filtersGallery(works) {
+    // Récupération du bloc "filters"
+    const filters = document.querySelector(".filters");
+    // Récupération du premier élément du tableau works dans une constante
+    const filter0 = works[0];
+    // Création de la balise button avec la classe "filter"
+    const filter = document.createElement("button");
+    filter.classList.add("filter");
+    // Récupération du nom de la catégorie du premier élément du tableau works pour la balise button
+    filter.innerText = filter0.category.name;
+    // Ajout de la balise button au bloc "filters"
+    filters.appendChild(filter);
+}
+
+// Appel des fonctions filtersGallery et worksGallery
+filtersGallery(works);
 worksGallery(works);
