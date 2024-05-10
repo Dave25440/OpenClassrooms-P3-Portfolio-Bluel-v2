@@ -15,6 +15,37 @@ if (works === null) {
     // console.log("Données en mémoire");
 }
 
+// Création d'un objet Set pour les catégories
+const categories = new Set();
+
+// Fonction de récupération des catégories
+function worksCategories(works, categories) {
+    // Parcours des catégories du tableau works via une boucle
+    for (let i = 0; i < works.length; i++) {
+        categories.add(works[i].category.name);
+        // Vérification du contenu de categories
+        // console.log(categories);
+    }
+}
+
+// Fonction de génération des filtres
+function filtersGallery(works) {
+    // Récupération du bloc "filters"
+    const filters = document.querySelector(".filters");
+    // Parcours des catégories du tableau works via une boucle
+    for (let i = 0; i < works.length; i++) {
+        // Récupération du tableau works dans une constante
+        const filtersTitles = works[i];
+        // Création de la balise button avec la classe "filter"
+        const filter = document.createElement("button");
+        filter.classList.add("filter");
+        // Récupération du nom des catégories du tableau works pour la balise button
+        filter.innerText = filtersTitles.category.name;
+        // Ajout de la balise button au bloc "filters"
+        filters.appendChild(filter);
+    }
+}
+
 // Fonction de génération de la galerie photos
 function worksGallery (works) {
     // Récupération du bloc "gallery"
@@ -39,24 +70,6 @@ function worksGallery (works) {
         // Ajout des balises image et figcaption à la balise figure
         figure.appendChild(img);
         figure.appendChild(figcaption);
-    }
-}
-
-// Fonction de génération des filtres
-function filtersGallery(works) {
-    // Récupération du bloc "filters"
-    const filters = document.querySelector(".filters");
-    // Parcours des catégories du tableau works via une boucle
-    for (let i = 0; i < works.length; i++) {
-        // Récupération du tableau works dans une constante
-        const filtersTitles = works[i];
-        // Création de la balise button avec la classe "filter"
-        const filter = document.createElement("button");
-        filter.classList.add("filter");
-        // Récupération du nom des catégories du tableau works pour la balise button
-        filter.innerText = filtersTitles.category.name;
-        // Ajout de la balise button au bloc "filters"
-        filters.appendChild(filter);
     }
 }
 
