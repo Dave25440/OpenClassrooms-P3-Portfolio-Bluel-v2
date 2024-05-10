@@ -131,21 +131,22 @@ li:hover {
 	gap: 10px;
 	margin-bottom: 50px;
 }
-.filters li a {
-	display: flex;
-	align-items: center;
+.filter {
 	font-family: 'Syne';
 	font-size: 16px;
 	font-weight: 700;
 	color: #1D6154;
 	text-decoration: none;
+	background-color: transparent;
 	border: 1px solid #1D6154;
 	border-radius: 60px;
 	padding: 10px 25px;
 }
-.filters li a:hover {
+.filter:hover,
+.filter:focus {
 	color: white;
 	background-color: #1D6154;
+	outline: none;
 }
 .gallery {
 	width: 100%;
