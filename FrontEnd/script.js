@@ -51,6 +51,20 @@ function filtersGallery() {
         filter.classList.add("filter");
         // Récupération de l'item de l'objet categories pour la balise button
         filter.innerText = item;
+        // Ajout d'un écouteur d'évènements de clic sur la balise button
+        filter.addEventListener("click", function () {
+            // Ajout du filtre du tableau works dans une constante
+            const categoriesFilter = works.filter(function (object) {
+                // Renvoi des objets dont le nom de la catégorie est égal à l'item de l'objet categories
+                return object.category.name === item;
+            });
+            // Vérification du contenu de categoriesFilter
+            // console.log(categoriesFilter);
+            // Suppression du contenu du bloc "gallery"
+            document.querySelector(".gallery").innerHTML = "";
+            // Appel de la fonction worksGallery avec le paramètre filtre du tableau works
+            worksGallery(categoriesFilter);
+        });
         // Ajout de la balise button au bloc "filters"
         filters.appendChild(filter);
     }
