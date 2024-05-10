@@ -125,10 +125,21 @@ li:hover {
 	margin-bottom: 1em;
 }
 .filters {
-	font-family: 'Syne';
 	display: flex;
 	justify-content: center;
 	gap: 10px;
+}
+.filters li a {
+	display: flex;
+	align-items: center;
+	font-family: 'Syne';
+	font-size: 16px;
+	font-weight: 700;
+	color: #1D6154;
+	text-decoration: none;
+	border: 1px solid #1D6154;
+	border-radius: 60px;
+	padding: 10px;
 }
 .gallery {
 	width: 100%;
