@@ -42,4 +42,5 @@ function worksGallery (works) {
     }
 }
 
+// Appel de la fonction worksGallery
 worksGallery(works);
