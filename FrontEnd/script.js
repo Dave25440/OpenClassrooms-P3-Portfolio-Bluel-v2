@@ -16,7 +16,8 @@ if (works === null) {
 }
 
 // Variables globales
-// Création d'un objet Set pour l'id des catégories
+// Création de deux objets Set pour l'id et le nom des catégories
+const categoriesId = new Set();
 const categories = new Set();
 // Récupération de la section "portfolio"
 const portfolio = document.getElementById("portfolio");
@@ -31,13 +32,14 @@ const buttonAll = document.createElement("li");
 buttonAll.classList.add("filter", "active");
 buttonAll.innerText = "Tous";
 
-// Fonction de récupération de l'id des catégories
-function worksCategories(works, categories) {
+// Fonction de récupération de l'id et du nom des catégories
+function worksCategories(works, categoriesId, categories) {
     // Parcours des catégories du tableau works via une boucle
     for (let i = 0; i < works.length; i++) {
-        categories.add(works[i].category.id);
-        // Vérification du contenu de categories
-        // console.log(categories);
+        categoriesId.add(works[i].category.id);
+        categories.add(works[i].category.name);
+        // Vérification du contenu de categoriesId et categories
+        // console.log(categoriesId, categories);
     }
 }
 
@@ -88,21 +90,25 @@ function filtersGallery() {
     // Appel de la fonction filterAll
     filterAll(buttonAll);
     // Appel de la fonction worksCategories
-    worksCategories(works, categories);
-    // Parcours de chaque item de l'objet categories via une boucle
-    for (let item of categories) {
+    worksCategories(works, categoriesId, categories);
+    // Parcours de chaque item de l'objet categoriesId via une boucle
+    for (let item of categoriesId) {
         // Création de la balise li avec la classe "filter"
         const filter = document.createElement("li");
         filter.classList.add("filter");
-        // Récupération de l'item de l'objet categories pour la balise li
-        filter.innerText = item;
+        // Transformation de l'objet categories en tableau
+        const cat = Array.from(categories);
+        // Vérification des éléments du tableau cat
+        // console.log(cat[item]);
+        // Récupération de l'élément du tableau cat (-1) pour la balise li
+        filter.innerText = cat[item-1];
         // Ajout d'un écouteur d'évènements de clic sur la balise li
         filter.addEventListener("click", function () {
             // Ajout de la classe "active" à la balise li
             filter.classList.add("active");
             // Ajout du filtre du tableau works dans une constante
             const categoriesFilter = works.filter(function (object) {
-                // Renvoi des objets dont le nom de la catégorie est égal à l'item de l'objet categories
+                // Renvoi des objets dont l'id de la catégorie est égal à l'item de l'objet categoriesId
                 return object.category.id === item;
             });
             // Vérification du contenu de categoriesFilter
