@@ -1,12 +1,13 @@
 // Récupération des données en mémoire
-let works = window.localStorage.getItem("worksLocal");
+let works = window.localStorage.getItem("localWorks");
 
-// Si aucune donnée en mémoire: téléchargement des données, sinon: écriture des données en JavaScript
+/* Si aucune donnée en mémoire: téléchargement des données,
+sinon: écriture des données en JavaScript */
 if (works === null) {
     const swagger = await fetch("http://localhost:5678/api/works/");
     works = await swagger.json();
     const worksContent = JSON.stringify(works);
-    window.localStorage.setItem("worksLocal", worksContent);
+    window.localStorage.setItem("localWorks", worksContent);
     // Vérification du téléchargement des données
     // console.log("Données téléchargées");
 } else {
@@ -28,9 +29,9 @@ gallery.classList.add("gallery");
 const filters = document.createElement("ul");
 filters.classList.add("filters");
 // Création du bouton "Tous"
-const buttonAll = document.createElement("li");
-buttonAll.classList.add("filter", "active");
-buttonAll.innerText = "Tous";
+const allFilter = document.createElement("li");
+allFilter.classList.add("filter", "active");
+allFilter.innerText = "Tous";
 
 // Fonction de récupération de l'id et du nom des catégories
 function worksCategories(works, categoriesId, categories) {
@@ -43,10 +44,30 @@ function worksCategories(works, categoriesId, categories) {
     }
 }
 
-// Fonction de génération de la galerie photos
-function worksGallery (works) {
+// Fonction d'initialisation de la section "portfolio"
+function portfolioInit () {
+    // Ajout de la liste "filters" à la section "portfolio"
+    portfolio.appendChild(filters);
+    // Ajout du bouton "Tous" à la liste "filters"
+    filters.appendChild(allFilter);
+    // Ajout d'un écouteur d'évènements de clic sur le bouton "Tous"
+    allFilter.addEventListener("click", function () {
+        // Récupération et suppression de la classe "active" courante
+        const activeFilter = document.querySelector(".active");
+        activeFilter.classList.remove("active");
+        // Ajout de la classe "active" au bouton "Tous"
+        allFilter.classList.add("active");
+        // Suppression du contenu du bloc "gallery"
+        gallery.innerHTML = "";
+        // Appel de la fonction worksGallery
+        worksGallery(works);
+    });
     // Ajout du bloc "gallery" à la section "portfolio"
     portfolio.appendChild(gallery);
+}
+
+// Fonction de génération de la galerie photos
+function worksGallery (works) {
     // Parcours du tableau works via une boucle
     for (let i = 0; i < works.length; i++) {
         // Récupération du tableau works dans une constante
@@ -55,7 +76,8 @@ function worksGallery (works) {
         const figure = document.createElement("figure");
         // Création de la balise image
         const img = document.createElement("img");
-        // Récupération du chemin des images et du titre des works pour les attributs src et alt
+        /* Récupération du chemin des images et
+        du titre des works pour les attributs src et alt */
         img.src = figures.imageUrl;
         img.alt = figures.title;
         // Création de la balise figcaption
@@ -70,75 +92,47 @@ function worksGallery (works) {
     }
 }
 
-// Fonction d'ajout du bouton "Tous"
-function filterAll(buttonAll) {
-    // Ajout d'un écouteur d'évènements de clic sur le bouton "Tous"
-    buttonAll.addEventListener("click", function () {
-        // Récupération de l'élément avec la classe "active" dans une constante
-        const buttonActive = document.querySelector(".active");
-        // S'il existe un élément avec la classe "active": retrait de la classe sur l'élément et renouvellement de la galerie
-        if (buttonActive) {
-            // Suppression de la classe "active"
-            buttonActive.classList.remove("active");
-            // Ajout de la classe "active" au bouton "Tous"
-            buttonAll.classList.add("active");
-            // Suppression du contenu du bloc "gallery"
-            gallery.innerHTML = "";
-            // Appel de la fonction worksGallery
-            worksGallery(works);
-        }
-    });
-    // Ajout du bouton "Tous" à la liste "filters"
-    filters.appendChild(buttonAll);
-}
-
 // Fonction de génération des filtres
-function filtersGallery() {
-    // Ajout de la liste "filters" à la section "portfolio"
-    portfolio.appendChild(filters);
-    // Appel de la fonction filterAll
-    filterAll(buttonAll);
+function filtersList() {
     // Appel de la fonction worksCategories
     worksCategories(works, categoriesId, categories);
     // Parcours de chaque item de l'objet categoriesId via une boucle
     for (let item of categoriesId) {
-        // Création de la balise li avec la classe "filter"
+        // Création de la balise li "filter"
         const filter = document.createElement("li");
         filter.classList.add("filter");
         // Transformation de l'objet categories en tableau
-        const cat = Array.from(categories);
-        // Vérification des éléments du tableau cat
-        // console.log(cat[item]);
-        // Récupération de l'élément du tableau cat (-1) pour la balise li
-        filter.innerText = cat[item-1];
-        // Ajout d'un écouteur d'évènements de clic sur la balise li
-        filter.addEventListener("click", function () {
-            // Récupération de l'élément avec la classe "active" dans une constante
-            const buttonActive = document.querySelector(".active");
-            // S'il existe un élément avec la classe "active": retrait de la classe sur l'élément, création et application du filtre
-            if (buttonActive) {
-                // Suppression de la classe "active"
-                buttonActive.classList.remove("active");
-                // Ajout de la classe "active" à la balise li
-                filter.classList.add("active");
-                // Ajout du filtre du tableau works dans une constante
-                const categoriesFilter = works.filter(function (object) {
-                    // Renvoi des objets dont l'id de la catégorie est égal à l'item de l'objet categoriesId
-                    return object.category.id === item;
-                });
-                // Vérification du contenu de categoriesFilter
-                // console.log(categoriesFilter);
-                // Suppression du contenu du bloc "gallery"
-                gallery.innerHTML = "";
-                // Appel de la fonction worksGallery avec le paramètre filtre du tableau works
-                worksGallery(categoriesFilter);
-            }
-        });
-        // Ajout de la balise li à la liste "filters"
+        const catArray = Array.from(categories);
+        // Vérification des éléments du tableau catArray
+        // console.log(catArray[item]);
+        // Récupération de l'élément du tableau catArray (-1) pour la balise "filter"
+        filter.innerText = catArray[item-1];
+        // Ajout de la balise "filter" à la liste "filters"
         filters.appendChild(filter);
+        // Ajout d'un écouteur d'évènements de clic sur la balise "filter"
+        filter.addEventListener("click", function () {
+            // Récupération et suppression de la classe "active" courante
+            const activeFilter = document.querySelector(".active");
+            activeFilter.classList.remove("active");
+            // Ajout de la classe "active" à la balise "filter"
+            filter.classList.add("active");
+            // Ajout du filtre du tableau works dans une constante
+            const categoriesFilter = works.filter(function (object) {
+                /* Renvoi des objets dont l'id de la catégorie
+                est égal à l'item de l'objet categoriesId */
+                return object.category.id === item;
+            });
+            // Vérification du contenu de categoriesFilter
+            // console.log(categoriesFilter);
+            // Suppression du contenu du bloc "gallery"
+            gallery.innerHTML = "";
+            // Appel de la fonction worksGallery avec le filtre du tableau works
+            worksGallery(categoriesFilter);
+        });
     }
 }
 
-// Appel des fonctions filtersGallery et worksGallery
-filtersGallery();
+// Appels des fonctions
+portfolioInit();
+filtersList();
 worksGallery(works);
