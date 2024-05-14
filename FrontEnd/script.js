@@ -28,7 +28,7 @@ const filters = document.createElement("ul");
 filters.classList.add("filters");
 // Création du bouton "Tous"
 const buttonAll = document.createElement("li");
-buttonAll.classList.add("filter");
+buttonAll.classList.add("filter", "active");
 buttonAll.innerText = "Tous";
 
 // Fonction de récupération des catégories
@@ -98,6 +98,8 @@ function filtersGallery() {
         filter.innerText = item;
         // Ajout d'un écouteur d'évènements de clic sur la balise li
         filter.addEventListener("click", function () {
+            // Ajout de la classe "active" à la balise li
+            filter.classList.add("active");
             // Ajout du filtre du tableau works dans une constante
             const categoriesFilter = works.filter(function (object) {
                 // Renvoi des objets dont le nom de la catégorie est égal à l'item de l'objet categories
