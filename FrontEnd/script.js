@@ -16,7 +16,7 @@ if (works === null) {
 }
 
 // Variables globales
-// Création d'un objet Set pour les catégories
+// Création d'un objet Set pour l'id des catégories
 const categories = new Set();
 // Récupération de la section "portfolio"
 const portfolio = document.getElementById("portfolio");
@@ -31,11 +31,11 @@ const buttonAll = document.createElement("li");
 buttonAll.classList.add("filter", "active");
 buttonAll.innerText = "Tous";
 
-// Fonction de récupération des catégories
+// Fonction de récupération de l'id des catégories
 function worksCategories(works, categories) {
     // Parcours des catégories du tableau works via une boucle
     for (let i = 0; i < works.length; i++) {
-        categories.add(works[i].category.name);
+        categories.add(works[i].category.id);
         // Vérification du contenu de categories
         // console.log(categories);
     }
@@ -103,7 +103,7 @@ function filtersGallery() {
             // Ajout du filtre du tableau works dans une constante
             const categoriesFilter = works.filter(function (object) {
                 // Renvoi des objets dont le nom de la catégorie est égal à l'item de l'objet categories
-                return object.category.name === item;
+                return object.category.id === item;
             });
             // Vérification du contenu de categoriesFilter
             // console.log(categoriesFilter);
