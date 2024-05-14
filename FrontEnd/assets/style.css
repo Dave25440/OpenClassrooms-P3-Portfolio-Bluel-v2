@@ -136,17 +136,14 @@ li:hover {
 	font-size: 16px;
 	font-weight: 700;
 	color: #1D6154;
-	text-decoration: none;
 	background-color: transparent;
 	border: 1px solid #1D6154;
 	border-radius: 60px;
 	padding: 10px 25px;
 }
-.filter:hover,
-.filter:focus {
+.filter:hover {
 	color: white;
 	background-color: #1D6154;
-	outline: none;
 	cursor: pointer;
 }
 .gallery {

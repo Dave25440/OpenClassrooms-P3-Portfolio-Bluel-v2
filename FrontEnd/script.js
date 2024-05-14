@@ -23,13 +23,12 @@ const portfolio = document.getElementById("portfolio");
 // Création du bloc "gallery"
 const gallery = document.createElement("div");
 gallery.classList.add("gallery");
-// Création du bloc "filters"
-const filters = document.createElement("div");
+// Création de la liste "filters"
+const filters = document.createElement("ul");
 filters.classList.add("filters");
 // Création du bouton "Tous"
-const buttonAll = document.createElement("button");
+const buttonAll = document.createElement("li");
 buttonAll.classList.add("filter");
-buttonAll.autofocus = true;
 buttonAll.innerText = "Tous";
 
 // Fonction de récupération des catégories
@@ -78,13 +77,13 @@ function filterAll(buttonAll) {
         // Appel de la fonction worksGallery
         worksGallery(works);
     });
-    // Ajout du bouton "Tous" au bloc "filters"
+    // Ajout du bouton "Tous" à la liste "filters"
     filters.appendChild(buttonAll);
 }
 
 // Fonction de génération des filtres
 function filtersGallery() {
-    // Ajout du bloc "filters" à la section "portfolio"
+    // Ajout de la liste "filters" à la section "portfolio"
     portfolio.appendChild(filters);
     // Appel de la fonction filterAll
     filterAll(buttonAll);
@@ -92,12 +91,12 @@ function filtersGallery() {
     worksCategories(works, categories);
     // Parcours de chaque item de l'objet categories via une boucle
     for (let item of categories) {
-        // Création de la balise button avec la classe "filter"
-        const filter = document.createElement("button");
+        // Création de la balise li avec la classe "filter"
+        const filter = document.createElement("li");
         filter.classList.add("filter");
-        // Récupération de l'item de l'objet categories pour la balise button
+        // Récupération de l'item de l'objet categories pour la balise li
         filter.innerText = item;
-        // Ajout d'un écouteur d'évènements de clic sur la balise button
+        // Ajout d'un écouteur d'évènements de clic sur la balise li
         filter.addEventListener("click", function () {
             // Ajout du filtre du tableau works dans une constante
             const categoriesFilter = works.filter(function (object) {
@@ -111,7 +110,7 @@ function filtersGallery() {
             // Appel de la fonction worksGallery avec le paramètre filtre du tableau works
             worksGallery(categoriesFilter);
         });
-        // Ajout de la balise button au bloc "filters"
+        // Ajout de la balise li à la liste "filters"
         filters.appendChild(filter);
     }
 }
