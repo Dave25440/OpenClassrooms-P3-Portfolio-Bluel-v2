@@ -104,19 +104,26 @@ function filtersGallery() {
         filter.innerText = cat[item-1];
         // Ajout d'un écouteur d'évènements de clic sur la balise li
         filter.addEventListener("click", function () {
-            // Ajout de la classe "active" à la balise li
-            filter.classList.add("active");
-            // Ajout du filtre du tableau works dans une constante
-            const categoriesFilter = works.filter(function (object) {
-                // Renvoi des objets dont l'id de la catégorie est égal à l'item de l'objet categoriesId
-                return object.category.id === item;
-            });
-            // Vérification du contenu de categoriesFilter
-            // console.log(categoriesFilter);
-            // Suppression du contenu du bloc "gallery"
-            gallery.innerHTML = "";
-            // Appel de la fonction worksGallery avec le paramètre filtre du tableau works
-            worksGallery(categoriesFilter);
+            // Récupération de l'élément avec la classe "active" dans une constante
+            const buttonActive = document.querySelector(".active");
+            // S'il existe un élément avec la classe "active": retrait de la classe sur l'élément, création et application du filtre
+            if (buttonActive) {
+                // Suppression de la classe "active"
+                buttonActive.classList.remove("active");
+                // Ajout de la classe "active" à la balise li
+                filter.classList.add("active");
+                // Ajout du filtre du tableau works dans une constante
+                const categoriesFilter = works.filter(function (object) {
+                    // Renvoi des objets dont l'id de la catégorie est égal à l'item de l'objet categoriesId
+                    return object.category.id === item;
+                });
+                // Vérification du contenu de categoriesFilter
+                // console.log(categoriesFilter);
+                // Suppression du contenu du bloc "gallery"
+                gallery.innerHTML = "";
+                // Appel de la fonction worksGallery avec le paramètre filtre du tableau works
+                worksGallery(categoriesFilter);
+            }
         });
         // Ajout de la balise li à la liste "filters"
         filters.appendChild(filter);
