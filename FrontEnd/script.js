@@ -74,10 +74,19 @@ function worksGallery (works) {
 function filterAll(buttonAll) {
     // Ajout d'un écouteur d'évènements de clic sur le bouton "Tous"
     buttonAll.addEventListener("click", function () {
-        // Suppression du contenu du bloc "gallery"
-        gallery.innerHTML = "";
-        // Appel de la fonction worksGallery
-        worksGallery(works);
+        // Récupération de l'élément avec la classe "active" dans une constante
+        const buttonActive = document.querySelector(".active");
+        // S'il existe un élément avec la classe "active": retrait de la classe sur l'élément et renouvellement de la galerie
+        if (buttonActive) {
+            // Suppression de la classe "active"
+            buttonActive.classList.remove("active");
+            // Ajout de la classe "active" au bouton "Tous"
+            buttonAll.classList.add("active");
+            // Suppression du contenu du bloc "gallery"
+            gallery.innerHTML = "";
+            // Appel de la fonction worksGallery
+            worksGallery(works);
+        }
     });
     // Ajout du bouton "Tous" à la liste "filters"
     filters.appendChild(buttonAll);
