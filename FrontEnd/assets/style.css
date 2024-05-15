@@ -68,9 +68,6 @@ main {
 	max-width: 1140px;
 	margin: auto;
 }
-section {
-	padding: 75px 95px;
-}
 h1 {
 	display: flex;
 	flex-direction: column;
@@ -100,7 +97,7 @@ nav ul {
 nav li {
 	display: flex;
 	align-items: center;
-	padding-left: 50px;
+	padding-left: 45px;
 	font-size: 16px;
 }
 nav li img {
@@ -118,7 +115,8 @@ a {
 #introduction {
 	display: flex;
 	align-items: center;
-	gap: 7.5%;
+	gap: 7.6%;
+	padding: 90px 95px;
 }
 #introduction figure {
 	flex: 1;
@@ -130,7 +128,7 @@ a {
 	flex: 0.85;
 }
 #introduction h2 {
-	margin-bottom: 0.8em;
+	margin-bottom: 20px;
 }
 #introduction p {
 	color: #3D3D3D;
@@ -138,6 +136,9 @@ a {
 }
 
 /* portfolio section */
+#portfolio {
+	padding: 50px 95px 60px 95px;
+}
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 50px;
@@ -156,7 +157,9 @@ a {
 	color: #1D6154;
 	border: 1px solid #1D6154;
 	border-radius: 60px;
-	padding: 10px 25px;
+	padding: 10px 15px;
+	min-width: 85px;
+	text-align: center;
 }
 .filter:hover,
 .active {
@@ -176,19 +179,18 @@ a {
 }
 figcaption {
 	color: #3D3D3D;
-	margin-top: 5px;
+	margin-top: 7px;
 }
 
 /* contact and logIn sections */
 #contact,
 #logIn {
-	width: 33.6%;
+	width: 33.3%;
 	margin: auto;
-	padding: 0;
 	color: #3D3D3D;
 }
 #logIn {
-	padding: 150px 0 350px 0;
+	padding: 150px 0 340px 0;
 }
 #contact > *,
 #logIn > * {
@@ -205,13 +207,12 @@ figcaption {
 #logIn form {
 	font-weight: 500;
 	text-align: left;
-	margin-top: 20px;
 	display: flex;
 	flex-direction: column;
 }
 #contact label,
 #logIn label {
-	margin: 2.8em 0 0.6em 0;
+	margin: 40px 0 10px 0;
 }
 .formInput {
 	height: 50px;
@@ -228,7 +229,7 @@ input[type="submit"] {
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
-	margin : 2.8em auto;
+	margin : 40px auto 30px auto;
 	width: 180px;
 	text-align: center;
 	border-radius: 60px;
@@ -247,9 +248,10 @@ footer {
 	justify-content: flex-end;
 	align-items: center;
 	background-color: white;
+	margin-top: 15px;
 }
 footer nav ul {
-	margin: 1.65em 7em;
+	margin: 23px 110px;
 }
 footer nav li {
 	font-size: 14px;
