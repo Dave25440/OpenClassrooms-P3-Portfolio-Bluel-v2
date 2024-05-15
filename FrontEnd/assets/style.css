@@ -179,33 +179,41 @@ figcaption {
 	margin-top: 5px;
 }
 
-/* contact section */
-#contact {
+/* contact and logIn sections */
+#contact,
+#logIn {
 	width: 33.6%;
 	margin: auto;
 	padding: 0;
 	color: #3D3D3D;
 }
-#contact > * {
+#logIn {
+	padding: 150px 0 350px 0;
+}
+#contact > *,
+#logIn > * {
 	text-align: center;
 }
-#contact h2 {
+#contact h2,
+#logIn h2 {
 	margin-bottom: 15px;
 }
 #contact p {
 	font-size: 16px;
 }
-#contact form {
+#contact form,
+#logIn form {
 	font-weight: 500;
 	text-align: left;
 	margin-top: 20px;
 	display: flex;
 	flex-direction: column;
 }
-#contact label {
+#contact label,
+#logIn label {
 	margin: 2.8em 0 0.6em 0;
 }
-.contactInput {
+.formInput {
 	height: 50px;
 	font-size: 16px;
 	border: none;
@@ -226,6 +234,11 @@ input[type="submit"] {
 	border-radius: 60px;
 	border: none;
 	padding: 10px 0;
+}
+.passP {
+	font-size: 14px;
+	font-weight: 500;
+	text-decoration: underline;
 }
 
 /* footer */
