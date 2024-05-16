@@ -82,7 +82,17 @@ export function signIn () {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(details)
         })
-        // Vérification de la réponse
-        .then(response => console.log(response));
+        // Récupération du résultat de la promesse
+        .then(function (response) {
+            /* Si connexion ok: vérification de la réponse,
+            sinon: vérification de la réponse */
+            if (response.ok) {
+                // Vérification de la réponse
+                console.log(response.status);
+            } else {
+                // Vérification de la réponse
+                console.log(response.status);
+            }
+        });
     });
 }
