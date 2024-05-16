@@ -2,7 +2,7 @@
 export function loginInit () {
     // Récupération du bouton "login"
     const loginNav = document.getElementById("loginNav");
-    // Ajout d'un écouteur d'évènements de clic sur le bouton "login"
+    // Ajout d'un écouteur d'évènements "click" sur le bouton "login"
     loginNav.addEventListener("click", function () {
         // Ajout de la classe "activeNav" au bouton "login"
         loginNav.classList.add("activeNav");
@@ -15,10 +15,11 @@ export function loginInit () {
         // Création du titre "Log In"
         const loginTitle = document.createElement("h2");
         loginTitle.innerText = "Log In";
-        // Création du formulaire
+        // Création du formulaire "loginForm"
         const loginForm = document.createElement("form");
         loginForm.action = "#";
         loginForm.method = "post";
+        loginForm.id = "loginForm";
         // Création du label "email"
         const mailLabel = document.createElement("label");
         mailLabel.htmlFor = "email";
@@ -61,5 +62,27 @@ export function loginInit () {
         loginForm.appendChild(signInput);
         login.appendChild(forgot);
         forgot.appendChild(forgotLink);
+    });
+}
+
+// Export de la fonction d'authentification
+export function signIn () {
+    // Ajout d'un écouteur d'évènements "submit" sur le formulaire "loginForm"
+    loginForm.addEventListener("submit", function (event) {
+        // Annulation du comportement par défaut du formulaire
+        event.preventDefault();
+        // Récupération du contenu des champs dans un objet
+        const details = {
+            email: event.target.querySelector("[name=email]").value,
+            password: event.target.querySelector("[name=password]").value
+        };
+        // Envoi des données sous forme de chaînes de caractères
+        fetch("http://localhost:5678/api/users/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(details)
+        })
+        // Vérification de la réponse
+        .then(response => console.log(response));
     });
 }

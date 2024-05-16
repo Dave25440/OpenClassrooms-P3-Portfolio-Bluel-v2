@@ -1,5 +1,5 @@
 // Import des fonctions du fichier login.js
-import { loginInit } from "./login.js";
+import { loginInit, signIn } from "./login.js";
 
 // Récupération des données en mémoire
 let works = window.localStorage.getItem("localWorks");
@@ -53,7 +53,7 @@ function portfolioInit () {
     portfolio.appendChild(filters);
     // Ajout du bouton "Tous" à la liste "filters"
     filters.appendChild(allFilter);
-    // Ajout d'un écouteur d'évènements de clic sur le bouton "Tous"
+    // Ajout d'un écouteur d'évènements "click" sur le bouton "Tous"
     allFilter.addEventListener("click", function () {
         // Récupération et suppression de la classe "active" courante
         const activeFilter = document.querySelector(".active");
@@ -112,7 +112,7 @@ function filtersList() {
         filter.innerText = catArray[item-1];
         // Ajout de la balise "filter" à la liste "filters"
         filters.appendChild(filter);
-        // Ajout d'un écouteur d'évènements de clic sur la balise "filter"
+        // Ajout d'un écouteur d'évènements "click" sur la balise "filter"
         filter.addEventListener("click", function () {
             // Récupération et suppression de la classe "active" courante
             const activeFilter = document.querySelector(".active");
@@ -136,7 +136,13 @@ function filtersList() {
 }
 
 // Appels des fonctions
-portfolioInit();
-filtersList();
-worksGallery(works);
-// loginInit();
+/* Si section "portfolio" récupérée: génération de son contenu,
+sinon: authentification */
+if (portfolio) {
+    portfolioInit();
+    filtersList();
+    worksGallery(works);
+} else {
+    // loginInit();
+    signIn();
+}
