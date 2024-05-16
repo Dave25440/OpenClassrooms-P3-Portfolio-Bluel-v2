@@ -112,7 +112,11 @@ export function signIn () {
                     error.innerText = "Erreur dans l’identifiant ou le mot de passe";
                     login.appendChild(error);
                 }
+                // Renvoi d'un message d'erreur
+                throw new Error("Erreur dans l’identifiant ou le mot de passe");
             }
-        });
+        })
+        // Gestion des erreurs et affichage du message dans la console
+        .catch(async error => console.error(error.message));
     });
 }
