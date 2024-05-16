@@ -84,10 +84,9 @@ export function signIn () {
         })
         // Récupération du résultat de la promesse
         .then(async function (response) {
-            // Récupération du paragraphe "error"
-            let error = document.querySelector(".error");
             /* Si connexion ok: vérification de la réponse,
-            sinon si aucun paragraphe "error": ajout du paragraphe */
+            sinon récupération du paragraphe "error",
+            si aucun paragraphe "error": ajout du paragraphe */
             if (response.ok) {
                 // Vérification de la réponse
                 // console.log(response.statusText);
@@ -97,17 +96,22 @@ export function signIn () {
                 const token = object.token;
                 // Vérification du contenu de token
                 // console.log(token);
+                // Stockage de token dans le navigateur
                 window.localStorage.setItem("localToken", token);
                 // Redirection vers la page index.html
                 window.location.href = "./index.html";
-            } else if(!error) {
-                // Vérification de la réponse
-                // console.log(response.statusText);
-                // Création et ajout du paragraphe "error"
-                error = document.createElement("p");
-                error.classList.add("error");
-                error.innerText = "Erreur dans l’identifiant ou le mot de passe";
-                login.appendChild(error);
+            } else {
+                // Récupération du paragraphe "error"
+                let error = document.querySelector(".error");
+                if (!error) {
+                    // Vérification de la réponse
+                    // console.log(response.statusText);
+                    // Création et ajout du paragraphe "error"
+                    error = document.createElement("p");
+                    error.classList.add("error");
+                    error.innerText = "Erreur dans l’identifiant ou le mot de passe";
+                    login.appendChild(error);
+                }
             }
         });
     });
