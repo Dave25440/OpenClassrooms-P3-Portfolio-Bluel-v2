@@ -1,3 +1,6 @@
+// Import des fonctions du fichier login.js
+import { loginInit } from "./login.js";
+
 // Récupération des données en mémoire
 let works = window.localStorage.getItem("localWorks");
 
@@ -136,3 +139,4 @@ function filtersList() {
 portfolioInit();
 filtersList();
 worksGallery(works);
+// loginInit();

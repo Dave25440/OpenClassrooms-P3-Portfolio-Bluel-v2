@@ -113,6 +113,9 @@ a {
 .activeNav {
 	font-weight: 600;
 }
+#loginNav {
+	cursor: pointer;
+}
 
 /* introduction section */
 #introduction {
