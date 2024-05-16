@@ -57,6 +57,20 @@ body {
 	font-size: 14px;
 	background-color: #FFFEF8;
 }
+aside {
+	max-width: 1440px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: black;
+	font-size: 16px;
+	padding: 22px 0;
+	gap: 12px;
+}
+aside,
+aside .fa-pen-to-square {
+	color: white;
+}
 header {
 	display: flex;
 	justify-content: space-between;

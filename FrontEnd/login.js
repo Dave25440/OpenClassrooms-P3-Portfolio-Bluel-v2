@@ -127,6 +127,15 @@ export function editMode () {
     const admin = window.localStorage.getItem("localToken");
     // Si présence du token: affichage du "Mode édition"
     if (admin) {
-        console.log("Mode édition activé");
+        // console.log("Mode édition activé");
+        // Récupération du body
+        const body = document.querySelector("body");
+        // Création de la balise aside
+        const edit = document.createElement("aside");
+        edit.innerHTML = `
+            <i class="fa-solid fa-pen-to-square"></i>
+            <p>Mode édition</p>`;
+        // Ajout de la balise aside en première position du body
+        body.prepend(edit);
     }
 }
