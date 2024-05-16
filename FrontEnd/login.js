@@ -90,10 +90,11 @@ export function signIn () {
             sinon si aucun paragraphe "error": ajout du paragraphe */
             if (response.ok) {
                 // Vérification de la réponse
-                console.log(response.status);
+                // console.log(response.statusText);
+                window.location.href = "./index.html";
             } else if(!error) {
                 // Vérification de la réponse
-                // console.log(response.status);
+                // console.log(response.statusText);
                 // Création et ajout du paragraphe "error"
                 error = document.createElement("p");
                 error.classList.add("error");
