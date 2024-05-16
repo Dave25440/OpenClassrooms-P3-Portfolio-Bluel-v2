@@ -1,5 +1,5 @@
 // Import des fonctions du fichier login.js
-import { loginInit, signIn } from "./login.js";
+import { loginInit, signIn, editMode } from "./login.js";
 
 // Récupération des données en mémoire
 let works = window.localStorage.getItem("localWorks");
@@ -142,6 +142,7 @@ if (portfolio) {
     portfolioInit();
     filtersList();
     worksGallery(works);
+    editMode();
 } else {
     // loginInit();
     signIn();

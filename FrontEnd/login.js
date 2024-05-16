@@ -120,3 +120,13 @@ export function signIn () {
         .catch(async error => console.error(error.message));
     });
 }
+
+// Export de la fonction de génération du "Mode édition"
+export function editMode () {
+    // Récupération du token
+    const admin = window.localStorage.getItem("localToken");
+    // Si présence du token: affichage du "Mode édition"
+    if (admin) {
+        console.log("Mode édition activé");
+    }
+}
