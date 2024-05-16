@@ -96,7 +96,8 @@ export function signIn () {
                 // Récupération du paramètre token de l'objet JSON
                 const token = object.token;
                 // Vérification du contenu de token
-                console.log(token);
+                // console.log(token);
+                window.localStorage.setItem("localToken", token);
                 // Redirection vers la page index.html
                 window.location.href = "./index.html";
             } else if(!error) {
