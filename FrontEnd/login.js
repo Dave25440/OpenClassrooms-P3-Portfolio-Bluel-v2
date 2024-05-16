@@ -130,12 +130,21 @@ export function editMode () {
         // console.log("Mode édition activé");
         // Récupération du body
         const body = document.querySelector("body");
-        // Création de la balise aside
+        // Création du bouton "Mode édition"
         const edit = document.createElement("aside");
         edit.innerHTML = `
-            <i class="fa-solid fa-pen-to-square"></i>
+            <i class="fa-regular fa-pen-to-square"></i>
             <p>Mode édition</p>`;
-        // Ajout de la balise aside en première position du body
+        // Ajout du bouton "Mode édition" en première position du body
         body.prepend(edit);
+        // Récupération de la div "projets"
+        const projets = document.getElementById("projets");
+        // Création du bouton "modifier"
+        const projetsEdit = document.createElement("div");
+        projetsEdit.innerHTML = `
+            <i class="fa-regular fa-pen-to-square"></i>
+            <p>modifier</p>`;
+        // Ajout du bouton "modifier" à la div "projets"
+        projets.appendChild(projetsEdit);
     }
 }

@@ -159,9 +159,16 @@ a {
 #portfolio {
 	padding: 50px 95px 60px 95px;
 }
-#portfolio h2 {
-	text-align: center;
+#projets {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	margin-bottom: 50px;
+	gap: 30px;
+}
+#projets div {
+	display: flex;
+	gap: 10px;
 }
 .filters {
 	display: flex;
