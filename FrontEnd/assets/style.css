@@ -111,7 +111,7 @@ a {
 	text-decoration: none;
 }
 .activeNav {
-	font-weight: 700;
+	font-weight: 600;
 }
 
 /* introduction section */
@@ -185,39 +185,39 @@ figcaption {
 	margin-top: 7px;
 }
 
-/* contact and logIn sections */
+/* contact and login sections */
 #contact,
-#logIn {
+#login {
 	width: 33.3%;
 	margin: auto;
 	color: #3D3D3D;
 }
-#logIn {
+#login {
 	padding: 150px 0 340px 0;
 }
 #contact > *,
-#logIn > * {
+#login > * {
 	text-align: center;
 }
 #contact h2,
-#logIn h2 {
+#login h2 {
 	margin-bottom: 15px;
 }
 #contact p {
 	font-size: 16px;
 }
 #contact form,
-#logIn form {
+#login form {
 	font-weight: 500;
 	text-align: left;
 	display: flex;
 	flex-direction: column;
 }
 #contact label,
-#logIn label {
+#login label {
 	margin: 40px 0 10px 0;
 }
-.formInput {
+.details {
 	height: 50px;
 	font-size: 16px;
 	border: none;
@@ -239,12 +239,12 @@ input[type="submit"] {
 	border: none;
 	padding: 10px 0;
 }
-.passP {
+.forgot {
 	font-size: 14px;
 	font-weight: 500;
 	text-decoration: underline;
 }
-.passP:hover {
+.forgot:hover {
 	color: #B1663C;
 }
 
