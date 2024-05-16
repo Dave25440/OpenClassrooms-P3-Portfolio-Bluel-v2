@@ -250,6 +250,10 @@ input[type="submit"] {
 .forgot:hover {
 	color: #B1663C;
 }
+.error {
+	font-weight: 600;
+	margin-top: 30px;
+}
 
 /* footer */
 footer {

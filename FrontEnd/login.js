@@ -84,14 +84,21 @@ export function signIn () {
         })
         // Récupération du résultat de la promesse
         .then(function (response) {
+            // Récupération du paragraphe "error"
+            let error = document.querySelector(".error");
             /* Si connexion ok: vérification de la réponse,
-            sinon: vérification de la réponse */
+            sinon si aucun paragraphe "error": ajout du paragraphe */
             if (response.ok) {
                 // Vérification de la réponse
                 console.log(response.status);
-            } else {
+            } else if(!error) {
                 // Vérification de la réponse
-                console.log(response.status);
+                // console.log(response.status);
+                // Création et ajout du paragraphe "error"
+                error = document.createElement("p");
+                error.classList.add("error");
+                error.innerText = "Erreur dans l’identifiant ou le mot de passe";
+                login.appendChild(error);
             }
         });
     });
