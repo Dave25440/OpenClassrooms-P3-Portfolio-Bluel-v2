@@ -146,5 +146,6 @@ export function editMode () {
             <p>modifier</p>`;
         // Ajout du bouton "modifier" à la div "projets"
         projets.appendChild(projetsEdit);
+        document.querySelector(".filters").remove();
     }
 }
