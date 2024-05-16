@@ -68,7 +68,7 @@ export function loginInit () {
 // Export de la fonction d'authentification
 export function signIn () {
     // Ajout d'un écouteur d'évènements "submit" sur le formulaire "loginForm"
-    loginForm.addEventListener("submit", function (event) {
+    loginForm.addEventListener("submit", async function (event) {
         // Annulation du comportement par défaut du formulaire
         event.preventDefault();
         // Récupération du contenu des champs dans un objet
@@ -77,13 +77,13 @@ export function signIn () {
             password: event.target.querySelector("[name=password]").value
         };
         // Envoi des données sous forme de chaînes de caractères
-        fetch("http://localhost:5678/api/users/login", {
+        await fetch("http://localhost:5678/api/users/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(details)
         })
         // Récupération du résultat de la promesse
-        .then(function (response) {
+        .then(async function (response) {
             // Récupération du paragraphe "error"
             let error = document.querySelector(".error");
             /* Si connexion ok: vérification de la réponse,
@@ -91,6 +91,13 @@ export function signIn () {
             if (response.ok) {
                 // Vérification de la réponse
                 // console.log(response.statusText);
+                // Récupération de l'objet JSON avec un comportement asynchrone
+                const object = await response.json();
+                // Récupération du paramètre token de l'objet JSON
+                const token = object.token;
+                // Vérification du contenu de token
+                console.log(token);
+                // Redirection vers la page index.html
                 window.location.href = "./index.html";
             } else if(!error) {
                 // Vérification de la réponse
