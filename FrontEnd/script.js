@@ -47,28 +47,6 @@ function worksCategories(works, categoriesId, categories) {
     }
 }
 
-// Fonction d'initialisation de la section "portfolio"
-function portfolioInit () {
-    // Ajout de la liste "filters" à la section "portfolio"
-    portfolio.appendChild(filters);
-    // Ajout du bouton "Tous" à la liste "filters"
-    filters.appendChild(allFilter);
-    // Ajout d'un écouteur d'évènements "click" sur le bouton "Tous"
-    allFilter.addEventListener("click", function () {
-        // Récupération et suppression de la classe "active" courante
-        const activeFilter = document.querySelector(".active");
-        activeFilter.classList.remove("active");
-        // Ajout de la classe "active" au bouton "Tous"
-        allFilter.classList.add("active");
-        // Suppression du contenu du bloc "gallery"
-        gallery.innerHTML = "";
-        // Appel de la fonction worksGallery
-        worksGallery(works);
-    });
-    // Ajout du bloc "gallery" à la section "portfolio"
-    portfolio.appendChild(gallery);
-}
-
 // Fonction de génération de la galerie photos
 function worksGallery (works) {
     // Parcours du tableau works via une boucle
@@ -93,6 +71,28 @@ function worksGallery (works) {
         figure.appendChild(img);
         figure.appendChild(figcaption);
     }
+}
+
+// Fonction d'initialisation de la section "portfolio"
+function portfolioInit () {
+    // Ajout de la liste "filters" à la section "portfolio"
+    portfolio.appendChild(filters);
+    // Ajout du bouton "Tous" à la liste "filters"
+    filters.appendChild(allFilter);
+    // Ajout d'un écouteur d'évènements "click" sur le bouton "Tous"
+    allFilter.addEventListener("click", function () {
+        // Récupération et suppression de la classe "active" courante
+        const activeFilter = document.querySelector(".active");
+        activeFilter.classList.remove("active");
+        // Ajout de la classe "active" au bouton "Tous"
+        allFilter.classList.add("active");
+        // Suppression du contenu du bloc "gallery"
+        gallery.innerHTML = "";
+        // Appel de la fonction worksGallery
+        worksGallery(works);
+    });
+    // Ajout du bloc "gallery" à la section "portfolio"
+    portfolio.appendChild(gallery);
 }
 
 // Fonction de génération des filtres
@@ -139,11 +139,11 @@ function filtersList() {
 /* Si section "portfolio" récupérée: génération de son contenu,
 sinon: authentification */
 if (portfolio) {
+    worksGallery(works);
     portfolioInit();
     filtersList();
-    worksGallery(works);
+    // loginInit();
     editMode();
 } else {
-    // loginInit();
     signIn();
 }

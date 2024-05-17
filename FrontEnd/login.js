@@ -85,6 +85,8 @@ function errorCheck (response) {
 
 // Export de la fonction d'authentification
 export function signIn () {
+    // Récupération du formulaire "loginForm"
+    const loginForm = document.getElementById("loginForm");
     // Ajout d'un écouteur d'évènements "submit" sur le formulaire "loginForm"
     loginForm.addEventListener("submit", async function (event) {
         // Annulation du comportement par défaut du formulaire
