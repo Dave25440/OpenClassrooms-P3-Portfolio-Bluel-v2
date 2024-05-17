@@ -65,6 +65,24 @@ export function loginInit () {
     });
 }
 
+// Fonction de génération du paragraphe "error"
+function errorCheck (response) {
+    // Récupération du paragraphe "error"
+    let error = document.querySelector(".error");
+    // Si aucun paragraphe "error": ajout du paragraphe
+    if (!error) {
+        // Vérification de la réponse
+        // console.log(response.statusText);
+        // Création et ajout du paragraphe "error"
+        error = document.createElement("p");
+        error.classList.add("error");
+        error.innerText = "Erreur dans l’identifiant ou le mot de passe";
+        login.appendChild(error);
+    }
+    // Renvoi d'un message d'erreur
+    throw new Error("Erreur dans l’identifiant ou le mot de passe");
+}
+
 // Export de la fonction d'authentification
 export function signIn () {
     // Ajout d'un écouteur d'évènements "submit" sur le formulaire "loginForm"
@@ -84,9 +102,8 @@ export function signIn () {
         })
         // Récupération du résultat de la promesse
         .then(async function (response) {
-            /* Si connexion ok: vérification de la réponse,
-            sinon récupération du paragraphe "error",
-            si aucun paragraphe "error": ajout du paragraphe */
+            /* Si connexion ok: récupération du token et redirection vers l'accueil,
+            sinon: appel de la fonction errorCheck */
             if (response.ok) {
                 // Vérification de la réponse
                 // console.log(response.statusText);
@@ -101,19 +118,7 @@ export function signIn () {
                 // Redirection vers la page index.html
                 window.location.href = "./index.html";
             } else {
-                // Récupération du paragraphe "error"
-                let error = document.querySelector(".error");
-                if (!error) {
-                    // Vérification de la réponse
-                    // console.log(response.statusText);
-                    // Création et ajout du paragraphe "error"
-                    error = document.createElement("p");
-                    error.classList.add("error");
-                    error.innerText = "Erreur dans l’identifiant ou le mot de passe";
-                    login.appendChild(error);
-                }
-                // Renvoi d'un message d'erreur
-                throw new Error("Erreur dans l’identifiant ou le mot de passe");
+                errorCheck(response);
             }
         })
         // Gestion des erreurs et affichage du message dans la console
