@@ -140,12 +140,11 @@ export function editMode () {
         // Récupération de la div "projets"
         const projets = document.getElementById("projets");
         // Création du bouton "modifier"
-        const projetsEdit = document.createElement("div");
-        projetsEdit.innerHTML = `
-            <i class="fa-regular fa-pen-to-square"></i>
-            <p>modifier</p>`;
+        const projetsEdit = document.createElement("span");
+        projetsEdit.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>modifier';
         // Ajout du bouton "modifier" à la div "projets"
         projets.appendChild(projetsEdit);
-        document.querySelector(".filters").remove();
+        // Suppression du contenu de la liste "filters"
+        document.querySelector(".filters").innerHTML = "";
     }
 }

@@ -163,12 +163,17 @@ a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-bottom: 50px;
-	gap: 30px;
+	margin-bottom: 60px;
 }
-#projets div {
-	display: flex;
-	gap: 10px;
+#projets h2 {
+	position: absolute;
+}
+#projets span {
+	position: relative;
+	left: 165px;
+}
+#projets .fa-pen-to-square {
+	margin-right: 10px;
 }
 .filters {
 	display: flex;
