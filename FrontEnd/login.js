@@ -72,6 +72,7 @@ export function editMode () {
         const body = document.querySelector("body");
         // Création du bouton "Mode édition"
         const edit = document.createElement("aside");
+        edit.id = "edit";
         edit.innerHTML = `
             <i class="fa-regular fa-pen-to-square"></i>
             <p>Mode édition</p>`;
@@ -80,8 +81,10 @@ export function editMode () {
         // Récupération de la div "projets"
         const projets = document.getElementById("projets");
         // Création du bouton "modifier"
-        const projetsEdit = document.createElement("span");
-        projetsEdit.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>modifier';
+        const projetsEdit = document.createElement("aside");
+        projetsEdit.innerHTML = `
+            <i class="fa-regular fa-pen-to-square"></i>
+            <p>modifier</p>`;
         // Ajout du bouton "modifier" à la div "projets"
         projets.appendChild(projetsEdit);
         // Suppression du contenu de la liste "filters"

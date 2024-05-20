@@ -57,7 +57,7 @@ body {
 	font-size: 14px;
 	background-color: #FFFEF8;
 }
-aside {
+#edit {
 	max-width: 1440px;
 	display: flex;
 	justify-content: center;
@@ -67,8 +67,8 @@ aside {
 	padding: 22px 0;
 	gap: 12px;
 }
-aside,
-aside .fa-pen-to-square {
+#edit,
+#edit .fa-pen-to-square {
 	color: white;
 }
 header {
@@ -165,7 +165,8 @@ a {
 #projets h2 {
 	position: absolute;
 }
-#projets span {
+#projets aside {
+	display: flex;
 	position: relative;
 	left: 165px;
 }
