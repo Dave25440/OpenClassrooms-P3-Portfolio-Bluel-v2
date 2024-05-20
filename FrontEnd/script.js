@@ -1,5 +1,6 @@
-// Import des fonctions du fichier login.js
+// Imports des fonctions des fichiers login.js et modal.js
 import { signIn, editMode } from "./login.js";
+import { modalInit } from "./modal.js";
 
 // Récupération des données en mémoire
 let works = window.localStorage.getItem("localWorks");
@@ -143,6 +144,7 @@ if (portfolio) {
     portfolioInit();
     filtersList();
     editMode();
+    modalInit();
 } else {
     signIn();
 }
