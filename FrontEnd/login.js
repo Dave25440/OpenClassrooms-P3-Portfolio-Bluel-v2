@@ -1,3 +1,6 @@
+// Import des fonctions du fichier modal.js
+import { modalInit } from "./modal.js";
+
 // Fonction de génération du paragraphe "error"
 function errorCheck (response) {
     // Récupération du paragraphe "error"
@@ -89,5 +92,7 @@ export function editMode () {
         projets.appendChild(projetsEdit);
         // Suppression du contenu de la liste "filters"
         document.querySelector(".filters").innerHTML = "";
+        // Appel de la fonction modalInit
+        modalInit();
     }
 }
