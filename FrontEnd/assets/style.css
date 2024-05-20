@@ -109,6 +109,7 @@ h2 {
 h3 {
 	font-size: 26px;
 	text-align: center;
+	margin-top: 10px;
 	margin-bottom: 45px;
 }
 nav ul {
@@ -223,11 +224,11 @@ figcaption {
 	margin-top: 7px;
 }
 dialog {
-	max-width: 630px;
+	max-width: 570px;
 	border: 0;
 	border-radius: 10px;
 	outline: none;
-	padding: 25px 30px 25px 30px;
+	padding: 25px 30px 15px 30px;
 }
 dialog::backdrop {
 	background: rgba(0, 0, 0, 0.3);
@@ -235,8 +236,10 @@ dialog::backdrop {
 dialog .fa-xmark {
 	display: flex;
 	justify-content: flex-end;
-	padding: 11.5px 6.5px;
-	margin-bottom: 10px;
+}
+dialog .fa-xmark::before {
+	margin: 5px 7.5px;
+	cursor: pointer;
 }
 dialog div {
 	display: grid;
@@ -249,6 +252,11 @@ dialog div {
 }
 dialog img {
 	width: 100%;
+}
+#addPhoto {
+	display: flex;
+	justify-content: center;
+	width: 237px;
 }
 
 /* contact and login sections */
@@ -293,7 +301,8 @@ dialog img {
 	border: none;
 	filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.09));
 }
-input[type="submit"] {
+input[type="submit"],
+dialog button {
 	font-family: "Syne";
 	font-weight: 700;
 	color: white;

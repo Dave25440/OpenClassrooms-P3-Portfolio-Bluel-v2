@@ -3,7 +3,7 @@ export function modalInit () {
     // Création de la balise dialog
     const modal = document.createElement("dialog");
     // Ajout de l'icône xmark Font Awesome à la balise dialog
-    modal.innerHTML = '<i class="fa-solid fa-xmark fa-lg"></i>';
+    modal.innerHTML = '<i class="fa-solid fa-xmark"></i>';
     // Création du titre "Galerie photo"
     const modalTitle = document.createElement("h3");
     modalTitle.innerText = "Galerie photo";
@@ -11,6 +11,10 @@ export function modalInit () {
     const modalGallery = document.createElement("div");
     // Récupération de toutes les balises img du bloc "gallery"
     const galleryImg = document.querySelector(".gallery").querySelectorAll("img");
+    // Création du bouton "Ajouter une photo"
+    const addPhoto = document.createElement("button");
+    addPhoto.id = "addPhoto";
+    addPhoto.innerText = "Ajouter une photo";
     // Ajout de la balise dialog à la section "portfolio"
     document.getElementById("portfolio").appendChild(modal);
     // Ajout du titre "Galerie photo" et de la balise div à la balise dialog
@@ -25,6 +29,8 @@ export function modalInit () {
         // Ajout de la balise figure à div et de l'img clonée à figure
         modalGallery.appendChild(modalFigure).appendChild(imgClone);
     });
+    // Ajout du bouton "Ajouter une photo" à la balise dialog
+    modal.appendChild(addPhoto);
     // Récupération des id des boutons d'édition dans un tableau
     const editButtons = ["#edit .fa-pen-to-square", "#edit p", "#projets aside"];
     // Parcours des éléments du tableau via une boucle
