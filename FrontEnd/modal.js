@@ -23,6 +23,19 @@ export function modalInit () {
         // Ajout de la balise figure à div et de l'img à figure
         modalGallery.appendChild(modalFigure).appendChild(img);
     });
-    // Affichage de la modale
-    modal.showModal();
+    // Récupération des id des boutons d'édition dans un tableau
+    const editButtons = ["#edit .fa-pen-to-square", "#edit p", "#projets aside"];
+    // Parcours des éléments du tableau via une boucle
+    editButtons.forEach(function (button) {
+        // Ajout d'un écouteur d'évènements "click" sur l'élément
+        document.querySelector(button).addEventListener("click", function () {
+            // Affichage de la modale
+            modal.showModal();
+        });
+    });
+    // Ajout d'un écouteur d'évènements "click" sur l'icône xmark Font Awesome
+    document.querySelector(".fa-xmark").addEventListener("click", function() {
+        // Fermeture de la modale
+        modal.close();
+    });
 }
