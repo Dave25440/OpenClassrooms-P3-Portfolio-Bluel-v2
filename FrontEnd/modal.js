@@ -20,8 +20,10 @@ export function modalInit () {
     galleryImg.forEach(function (img) {
         // Création de la balise figure
         const modalFigure = document.createElement("figure");
-        // Ajout de la balise figure à div et de l'img à figure
-        modalGallery.appendChild(modalFigure).appendChild(img);
+        // Clonage de la balise img
+        const imgClone = img.cloneNode();
+        // Ajout de la balise figure à div et de l'img clonée à figure
+        modalGallery.appendChild(modalFigure).appendChild(imgClone);
     });
     // Récupération des id des boutons d'édition dans un tableau
     const editButtons = ["#edit .fa-pen-to-square", "#edit p", "#projets aside"];
