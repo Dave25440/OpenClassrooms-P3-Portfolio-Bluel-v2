@@ -238,6 +238,18 @@ dialog .fa-xmark {
 	padding: 11.5px 6.5px;
 	margin-bottom: 10px;
 }
+dialog div {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-column-gap: 9px;
+	grid-row-gap: 29px;
+	margin: 0 75px 0 75px;
+	padding-bottom: 67px;
+	border-bottom: 1px solid #B3B3B3;
+}
+dialog img {
+	width: 100%;
+}
 
 /* contact and login sections */
 #contact,

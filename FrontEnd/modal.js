@@ -24,5 +24,5 @@ export function modalInit () {
         modalGallery.appendChild(modalFigure).appendChild(img);
     });
     // Affichage de la modale
-    // modal.showModal();
+    modal.showModal();
 }
