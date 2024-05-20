@@ -250,8 +250,27 @@ dialog div {
 	padding-bottom: 67px;
 	border-bottom: 1px solid #B3B3B3;
 }
+dialog figure {
+	position: relative;
+}
 dialog img {
 	width: 100%;
+}
+dialog figcaption {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: black;
+	border-radius: 2px;
+	width: 17px;
+	height: 17px;
+	position: absolute;
+	top: 5.8%;
+	left: 71.6%;
+	margin: 0;
+}
+dialog .fa-trash-can {
+	color: white;
 }
 #addPhoto {
 	display: flex;

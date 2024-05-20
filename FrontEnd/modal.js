@@ -26,8 +26,14 @@ export function modalInit () {
         const modalFigure = document.createElement("figure");
         // Clonage de la balise img
         const imgClone = img.cloneNode();
+        // Création de la balise figcaption
+        const delCan = document.createElement("figcaption");
+        // Ajout de l'icône trash-can Font Awesome à la balise figcaption
+        delCan.innerHTML = '<i class="fa-solid fa-trash-can fa-xs"></i>';
         // Ajout de la balise figure à div et de l'img clonée à figure
         modalGallery.appendChild(modalFigure).appendChild(imgClone);
+        // Ajout de la balise figcaption à figure
+        modalFigure.appendChild(delCan);
     });
     // Ajout du bouton "Ajouter une photo" à la balise dialog
     modal.appendChild(addPhoto);
