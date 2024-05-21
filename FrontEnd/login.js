@@ -73,22 +73,19 @@ export function editMode () {
         // console.log("Mode édition activé");
         // Récupération du body
         const body = document.querySelector("body");
-        // Création du bouton "Mode édition"
-        const edit = document.createElement("aside");
-        edit.id = "edit";
-        edit.innerHTML = `
+        // Création du bloc "Mode édition"
+        const editTitle = document.createElement("aside");
+        editTitle.innerHTML = `
             <i class="fa-regular fa-pen-to-square"></i>
             <p>Mode édition</p>`;
-        // Ajout du bouton "Mode édition" en première position du body
-        body.prepend(edit);
-        // Récupération de la div "projets"
+        // Ajout du bloc "Mode édition" en première position du body
+        body.prepend(editTitle);
+        // Récupération du bloc "projets"
         const projets = document.getElementById("projets");
         // Création du bouton "modifier"
-        const projetsEdit = document.createElement("aside");
-        projetsEdit.innerHTML = `
-            <i class="fa-regular fa-pen-to-square"></i>
-            <p>modifier</p>`;
-        // Ajout du bouton "modifier" à la div "projets"
+        const projetsEdit = document.createElement("button");
+        projetsEdit.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>modifier';
+        // Ajout du bouton "modifier" au bloc "projets"
         projets.appendChild(projetsEdit);
         // Suppression du contenu de la liste "filters"
         document.querySelector(".filters").innerHTML = "";

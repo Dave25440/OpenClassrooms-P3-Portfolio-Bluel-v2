@@ -3,15 +3,10 @@ const modal = document.createElement("dialog");
 
 // Fonction de gestion des évènements de la modale
 function modalEvents () {
-    // Récupération des id des boutons d'édition dans un tableau
-    const editButtons = ["#edit .fa-pen-to-square", "#edit p", "#projets aside"];
-    // Parcours des éléments du tableau via une boucle
-    editButtons.forEach(function (button) {
-        // Ajout d'un écouteur d'évènements "click" sur l'élément
-        document.querySelector(button).addEventListener("click", function () {
-            // Affichage de la modale
-            modal.showModal();
-        });
+    // Ajout d'un écouteur d'évènements "click" sur le bouton "modifier"
+    document.querySelector("#projets button").addEventListener("click", function () {
+        // Affichage de la modale
+        modal.showModal();
     });
     // Ajout d'un écouteur d'évènements "click" sur l'icône xmark Font Awesome
     document.querySelector(".fa-xmark").addEventListener("click", function() {

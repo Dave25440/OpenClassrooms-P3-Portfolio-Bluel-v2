@@ -57,7 +57,7 @@ body {
 	font-size: 14px;
 	background-color: #FFFEF8;
 }
-#edit {
+aside {
 	max-width: 1440px;
 	display: flex;
 	justify-content: center;
@@ -67,11 +67,6 @@ body {
 	font-size: 16px;
 	padding: 22px 0;
 	gap: 12px;
-}
-#edit .fa-pen-to-square,
-#edit p {
-	color: white;
-	cursor: pointer;
 }
 header {
 	display: flex;
@@ -172,12 +167,14 @@ a {
 #projets h2 {
 	position: absolute;
 }
-#projets aside {
+#projets button {
 	display: flex;
 	position: relative;
 	left: 165px;
+	background: transparent;
+	border: 0;
 }
-#projets aside:hover {
+#projets button:hover {
 	color: #B1663C;
 	cursor: pointer;
 }
@@ -314,11 +311,11 @@ dialog .fa-trash-can {
 .details {
 	height: 50px;
 	font-size: 16px;
-	border: none;
+	border: 0;
 	filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.09));
 }
 #contact textarea {
-	border: none;
+	border: 0;
 	filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.09));
 }
 input[type="submit"],
@@ -331,7 +328,7 @@ dialog button {
 	width: 180px;
 	text-align: center;
 	border-radius: 60px;
-	border: none;
+	border: 0;
 	padding: 10px 0;
 }
 .forgot {
