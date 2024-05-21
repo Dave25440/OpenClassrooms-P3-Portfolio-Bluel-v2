@@ -268,8 +268,8 @@ dialog figcaption {
 	width: 17px;
 	height: 17px;
 	position: absolute;
-	top: 5.8%;
-	left: 71.6%;
+	top: 6px;
+	right: 5px;
 	margin: 0;
 }
 dialog .fa-trash-can {
