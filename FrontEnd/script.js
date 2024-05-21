@@ -82,8 +82,8 @@ function portfolioInit () {
     // Ajout d'un écouteur d'évènements "click" sur le bouton "Tous"
     allFilter.addEventListener("click", function () {
         // Récupération et suppression de la classe "active" courante
-        const activeFilter = document.querySelector(".active");
-        activeFilter.classList.remove("active");
+        const filterButtons = document.querySelectorAll(".filter");
+        filterButtons.forEach(filter => filter.classList.remove("active"));
         // Ajout de la classe "active" au bouton "Tous"
         allFilter.classList.add("active");
         // Suppression du contenu du bloc "gallery"
@@ -115,8 +115,8 @@ function filtersList() {
         // Ajout d'un écouteur d'évènements "click" sur la balise "filter"
         filter.addEventListener("click", function () {
             // Récupération et suppression de la classe "active" courante
-            const activeFilter = document.querySelector(".active");
-            activeFilter.classList.remove("active");
+            const filterButtons = document.querySelectorAll(".filter");
+            filterButtons.forEach(filter => filter.classList.remove("active"));
             // Ajout de la classe "active" à la balise "filter"
             filter.classList.add("active");
             // Ajout du filtre du tableau works dans une constante
