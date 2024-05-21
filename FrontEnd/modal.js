@@ -57,6 +57,11 @@ export function modalInit () {
         // Fermeture de la modale
         modal.close();
     });
+    // Ajout d'un écouteur d'évènements "click" sur le bouton "Ajouter une photo"
+    addPhoto.addEventListener("click", function (event) {
+        // Annulation du comportement par défaut du bouton
+        event.preventDefault();
+    });
     // Ajout d'un écouteur d'évènements "click" sur la modale
     modal.addEventListener("click", function (event) {
         // Si cible du clic égale à modale: fermeture de la modale
