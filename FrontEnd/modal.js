@@ -57,4 +57,11 @@ export function modalInit () {
         // Fermeture de la modale
         modal.close();
     });
+    // Ajout d'un écouteur d'évènements "click" sur la modale
+    modal.addEventListener("click", function (event) {
+        // Si cible du clic égale à modale: fermeture de la modale
+        if (event.target === modal) {
+            modal.close();
+        }
+    });
 }
