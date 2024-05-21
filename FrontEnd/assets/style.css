@@ -108,8 +108,7 @@ h2 {
 }
 h3 {
 	font-size: 26px;
-	text-align: center;
-	margin-top: 10px;
+	margin-top: 24px;
 	margin-bottom: 45px;
 }
 nav ul {
@@ -224,18 +223,22 @@ figcaption {
 	margin-top: 7px;
 }
 dialog {
-	max-width: 570px;
+	text-align: center;
 	border: 0;
 	border-radius: 10px;
 	outline: none;
+	padding: 0;
+}
+dialog form {
+	max-width: 570px;
 	padding: 25px 30px 15px 30px;
 }
 dialog::backdrop {
 	background: rgba(0, 0, 0, 0.3);
 }
 dialog .fa-xmark {
-	display: flex;
-	justify-content: flex-end;
+	position: absolute;
+	right: 30px;
 }
 dialog .fa-xmark::before {
 	margin: 5px 7.5px;
@@ -273,8 +276,6 @@ dialog .fa-trash-can {
 	color: white;
 }
 #addPhoto {
-	display: flex;
-	justify-content: center;
 	width: 237px;
 }
 

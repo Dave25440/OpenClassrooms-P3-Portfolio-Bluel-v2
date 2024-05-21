@@ -2,12 +2,15 @@
 export function modalInit () {
     // Création de la balise dialog
     const modal = document.createElement("dialog");
-    // Ajout de l'icône xmark Font Awesome à la balise dialog
-    modal.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+    // Création du formulaire
+    const modalForm = document.createElement("form");
+    modalForm.method = "dialog";
+    // Ajout de l'icône xmark Font Awesome au formulaire
+    modalForm.innerHTML = '<i class="fa-solid fa-xmark"></i>';
     // Création du titre "Galerie photo"
     const modalTitle = document.createElement("h3");
     modalTitle.innerText = "Galerie photo";
-    // Création de la balise div
+    // Création du bloc modalGallery
     const modalGallery = document.createElement("div");
     // Récupération de toutes les balises img du bloc "gallery"
     const galleryImg = document.querySelector(".gallery").querySelectorAll("img");
@@ -17,9 +20,11 @@ export function modalInit () {
     addPhoto.innerText = "Ajouter une photo";
     // Ajout de la balise dialog à la section "portfolio"
     document.getElementById("portfolio").appendChild(modal);
-    // Ajout du titre "Galerie photo" et de la balise div à la balise dialog
-    modal.appendChild(modalTitle);
-    modal.appendChild(modalGallery);
+    // Ajout du formulaire à la balise dialog
+    modal.appendChild(modalForm);
+    // Ajout du titre "Galerie photo" et du bloc modalGallery au formulaire
+    modalForm.appendChild(modalTitle);
+    modalForm.appendChild(modalGallery);
     // Parcours des balises img du bloc "gallery" via une boucle
     galleryImg.forEach(function (img) {
         // Création de la balise figure
@@ -30,13 +35,13 @@ export function modalInit () {
         const delCan = document.createElement("figcaption");
         // Ajout de l'icône trash-can Font Awesome à la balise figcaption
         delCan.innerHTML = '<i class="fa-solid fa-trash-can fa-xs"></i>';
-        // Ajout de la balise figure à div et de l'img clonée à figure
+        // Ajout de la balise figure au bloc modalGallery et de l'img clonée à figure
         modalGallery.appendChild(modalFigure).appendChild(imgClone);
         // Ajout de la balise figcaption à figure
         modalFigure.appendChild(delCan);
     });
-    // Ajout du bouton "Ajouter une photo" à la balise dialog
-    modal.appendChild(addPhoto);
+    // Ajout du bouton "Ajouter une photo" au formulaire
+    modalForm.appendChild(addPhoto);
     // Récupération des id des boutons d'édition dans un tableau
     const editButtons = ["#edit .fa-pen-to-square", "#edit p", "#projets aside"];
     // Parcours des éléments du tableau via une boucle
