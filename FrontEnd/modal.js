@@ -1,7 +1,39 @@
+// Création de la balise dialog
+const modal = document.createElement("dialog");
+
+// Fonction de gestion des évènements de la modale
+function modalEvents () {
+    // Récupération des id des boutons d'édition dans un tableau
+    const editButtons = ["#edit .fa-pen-to-square", "#edit p", "#projets aside"];
+    // Parcours des éléments du tableau via une boucle
+    editButtons.forEach(function (button) {
+        // Ajout d'un écouteur d'évènements "click" sur l'élément
+        document.querySelector(button).addEventListener("click", function () {
+            // Affichage de la modale
+            modal.showModal();
+        });
+    });
+    // Ajout d'un écouteur d'évènements "click" sur l'icône xmark Font Awesome
+    document.querySelector(".fa-xmark").addEventListener("click", function() {
+        // Fermeture de la modale
+        modal.close();
+    });
+    // Ajout d'un écouteur d'évènements "click" sur le bouton "Ajouter une photo"
+    document.getElementById("addPhoto").addEventListener("click", function (event) {
+        // Annulation du comportement par défaut du bouton
+        event.preventDefault();
+    });
+    // Ajout d'un écouteur d'évènements "click" sur la modale
+    modal.addEventListener("click", function (event) {
+        // Si cible du clic égale à modale: fermeture de la modale
+        if (event.target === modal) {
+            modal.close();
+        }
+    });
+}
+
 // Export de la fonction d'initialisation de la modale
 export function modalInit () {
-    // Création de la balise dialog
-    const modal = document.createElement("dialog");
     // Création du formulaire
     const modalForm = document.createElement("form");
     modalForm.method = "dialog";
@@ -42,31 +74,6 @@ export function modalInit () {
     });
     // Ajout du bouton "Ajouter une photo" au formulaire
     modalForm.appendChild(addPhoto);
-    // Récupération des id des boutons d'édition dans un tableau
-    const editButtons = ["#edit .fa-pen-to-square", "#edit p", "#projets aside"];
-    // Parcours des éléments du tableau via une boucle
-    editButtons.forEach(function (button) {
-        // Ajout d'un écouteur d'évènements "click" sur l'élément
-        document.querySelector(button).addEventListener("click", function () {
-            // Affichage de la modale
-            modal.showModal();
-        });
-    });
-    // Ajout d'un écouteur d'évènements "click" sur l'icône xmark Font Awesome
-    document.querySelector(".fa-xmark").addEventListener("click", function() {
-        // Fermeture de la modale
-        modal.close();
-    });
-    // Ajout d'un écouteur d'évènements "click" sur le bouton "Ajouter une photo"
-    addPhoto.addEventListener("click", function (event) {
-        // Annulation du comportement par défaut du bouton
-        event.preventDefault();
-    });
-    // Ajout d'un écouteur d'évènements "click" sur la modale
-    modal.addEventListener("click", function (event) {
-        // Si cible du clic égale à modale: fermeture de la modale
-        if (event.target === modal) {
-            modal.close();
-        }
-    });
+    // Appel de la fonction modalEvents
+    modalEvents();
 }
