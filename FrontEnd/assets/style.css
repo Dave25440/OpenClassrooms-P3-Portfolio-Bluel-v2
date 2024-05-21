@@ -24,6 +24,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -48,6 +49,7 @@ table {
 	border-spacing: 0;
 }
 /* end reset css */
+
 
 /* global css */
 body {
@@ -130,6 +132,7 @@ a {
 	font-weight: 600;
 }
 
+
 /* introduction section */
 #introduction {
 	display: flex;
@@ -153,6 +156,7 @@ a {
 	color: #3D3D3D;
 	margin-bottom: 1em;
 }
+
 
 /* portfolio section */
 #portfolio {
@@ -215,7 +219,7 @@ a {
 .gallery img {
 	width: 100%;
 }
-figcaption {
+.gallery figcaption {
 	color: #3D3D3D;
 	margin-top: 7px;
 }
@@ -246,7 +250,7 @@ dialog div {
 	grid-template-columns: repeat(5, 1fr);
 	grid-column-gap: 9px;
 	grid-row-gap: 29px;
-	margin: 0 75px 0 75px;
+	margin: 0 75px;
 	padding-bottom: 67px;
 	border-bottom: 1px solid #B3B3B3;
 }
@@ -275,6 +279,7 @@ dialog .fa-trash-can {
 #addPhoto {
 	width: 237px;
 }
+
 
 /* contact and login sections */
 #contact,
@@ -343,6 +348,7 @@ dialog button {
 	font-weight: 600;
 	margin-top: 30px;
 }
+
 
 /* footer */
 footer {
