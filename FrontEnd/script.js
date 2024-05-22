@@ -187,6 +187,15 @@ function modalEvents () {
             modal.addEventListener("animationend", modalClosure);
         }
     });
+    modal.addEventListener("keydown", function (event) {
+        event.preventDefault();
+
+        // Si touche enfoncée égale à Échap: animation et fermeture de la modale
+        if (event.key === "Escape") {
+            modal.classList.add("fadeOut");
+            modal.addEventListener("animationend", modalClosure);
+        }
+    });
 }
 
 
