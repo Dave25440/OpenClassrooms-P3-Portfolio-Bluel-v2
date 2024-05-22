@@ -156,10 +156,20 @@ function filtersList() {
 function worksDel () {
     modal.querySelectorAll(".del-btn")
         .forEach(button =>
-            button.addEventListener("click", function (event) {
+            button.addEventListener("click", async function (event) {
                 event.preventDefault();
+
+                // Récupération et ajout de l'id de la balise figure au bouton
                 button.id = button.closest("figure").id;
-                console.log(button.id);
+
+                // Requête de suppression de travaux avec l'id du bouton
+                await fetch(`http://localhost:5678/api/works/${button.id}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Authorization": "Bearer my-token",
+                        "Content-Type": "application/json"
+                    }
+                });
             })
         );
 }
