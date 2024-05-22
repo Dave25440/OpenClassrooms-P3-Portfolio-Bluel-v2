@@ -151,20 +151,33 @@ function filtersList() {
 }
 
 
+// Fonction de suppression de travaux
+function worksDel () {
+    modal.querySelectorAll(".del-btn")
+        .forEach(button =>
+            button.addEventListener("click", function (event) {
+                event.preventDefault();
+                console.log(button);
+            })
+        );
+}
+
+
 // Fonction de génération de la galerie de la modale
 function modalGallery (modalBlock) {
     worksGallery(works, modalBlock);
 
     // Ajout d'un bouton avec l'icône trash-can Font Awesome à la balise figcaption
     modalBlock.querySelectorAll("figcaption")
-        .forEach(
-            caption => caption.innerHTML = `
+        .forEach(caption =>
+            caption.innerHTML = `
                 <button class="del-btn">
                     <i class="fa-solid fa-trash-can fa-xs"></i>
                 </button>`
         );
 
     modal1.insertBefore(modalBlock, addPhoto);
+    worksDel();
 }
 
 
@@ -174,16 +187,6 @@ function modalEvents () {
 
         // Affichage de la modale
         modal.showModal();
-    });
-    xmark.addEventListener("click", function (event) {
-        event.preventDefault();
-
-        // Animation et fermeture de la modale
-        modal.classList.add("fadeOut");
-        modal.addEventListener("animationend", modalClosure);
-    });
-    addPhoto.addEventListener("click", function (event) {
-        event.preventDefault();
     });
     modal.addEventListener("click", function (event) {
 
@@ -201,6 +204,14 @@ function modalEvents () {
             modal.classList.add("fadeOut");
             modal.addEventListener("animationend", modalClosure);
         }
+    });
+    xmark.addEventListener("click", function (event) {
+        event.preventDefault();
+        modal.classList.add("fadeOut");
+        modal.addEventListener("animationend", modalClosure);
+    });
+    addPhoto.addEventListener("click", function (event) {
+        event.preventDefault();
     });
 }
 
