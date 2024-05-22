@@ -59,7 +59,7 @@ function signIn () {
         })
 
         // Gestion des erreurs et affichage du message dans la console
-        .catch(async error => console.error(error.message));
+        .catch(error => console.error(error.message));
     });
 }
 

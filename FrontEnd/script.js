@@ -1,7 +1,3 @@
-// Import des fonctions du fichier modal.js
-import { modalInit } from "./modal.js";
-
-
 // Variables globales
 
 // Récupération des données en mémoire
@@ -21,6 +17,16 @@ const gallery = document.createElement("div");
 gallery.classList.add("gallery");
 portfolio.appendChild(filters);
 portfolio.appendChild(gallery);
+
+// Mode édition
+const editTitle = document.querySelector(".edit-title");
+const editBtn = document.querySelector(".edit-btn");
+
+// Fenêtre modale
+const modal = document.querySelector("dialog");
+const modal1 = document.getElementById("modal1");
+let modalBlock = document.createElement("div");
+const addPhoto = document.getElementById("add-photo");
 
 
 // Fonction asynchrone de récupération des données de la route works
@@ -53,7 +59,7 @@ function worksCategories(works, categoriesId, categories) {
 
 
 // Fonction de génération de la galerie photos
-function worksGallery (works) {
+function worksGallery (works, gallery) {
     for (let i = 0; i < works.length; i++) {
         let figure = document.createElement("figure");
         let img = document.createElement("img");
@@ -93,7 +99,7 @@ function allButton () {
 
         // Purge du bloc "gallery" et appel de la fonction worksGallery
         gallery.innerHTML = "";
-        worksGallery(works);
+        worksGallery(works, gallery);
     });
 }
 
@@ -129,9 +135,48 @@ function filtersList() {
             gallery.innerHTML = "";
 
             // Appel de la fonction worksGallery avec le filtre
-            worksGallery(categoriesFilter);
+            worksGallery(categoriesFilter, gallery);
         });
     }
+}
+
+
+// Fonction de génération de la galerie de la modale
+function modalGallery (modalBlock) {
+    worksGallery(works, modalBlock);
+
+    // Ajout de l'icône trash-can Font Awesome à la balise figcaption
+    modalBlock.querySelectorAll("figcaption")
+        .forEach(
+            caption => caption.innerHTML = '<i class="fa-solid fa-trash-can fa-xs"></i>'
+        );
+
+    modal1.insertBefore(modalBlock, addPhoto);
+}
+
+
+// Fonction de gestion des évènements de la modale
+function modalEvents () {
+    editBtn.addEventListener("click", function () {
+
+        // Affichage de la modale
+        modal.showModal();
+    });
+    document.querySelector(".fa-xmark").addEventListener("click", function() {
+
+        // Fermeture de la modale
+        modal.close();
+    });
+    addPhoto.addEventListener("click", function (event) {
+        event.preventDefault();
+    });
+    modal.addEventListener("click", function (event) {
+
+        // Si cible du clic égale à modale: fermeture de la modale
+        if (event.target === modal) {
+            modal.close();
+        }
+    });
 }
 
 
@@ -143,25 +188,18 @@ function editMode () {
 
     // Si présence du token: affichage du "Mode édition"
     if (admin) {
-        const body = document.querySelector("body");
-        const editTitle = document.createElement("aside");
-        editTitle.innerHTML = `
-            <i class="fa-regular fa-pen-to-square"></i>
-            <p>Mode édition</p>`;
-        const projets = document.getElementById("projets");
-        const projetsEdit = document.createElement("button");
-        projetsEdit.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>modifier';
-        body.prepend(editTitle);
-        projets.appendChild(projetsEdit);
+        editTitle.classList.remove("hidden");
+        editBtn.classList.remove("hidden");
         filters.innerHTML = "";
-        modalInit();
+        modalGallery(modalBlock);
+        modalEvents();
     }
 }
 
 
 // Appels de fonctions
-await worksData();
-worksGallery(works);
+worksData();
+worksGallery(works, gallery);
 allButton();
 filtersList();
 editMode();

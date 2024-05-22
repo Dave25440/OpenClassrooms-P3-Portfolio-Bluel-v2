@@ -59,7 +59,7 @@ body {
 	font-size: 14px;
 	background-color: #FFFEF8;
 }
-aside {
+.edit-title {
 	max-width: 1440px;
 	display: flex;
 	justify-content: center;
@@ -171,14 +171,14 @@ a {
 #projets h2 {
 	position: absolute;
 }
-#projets button {
+.edit-btn {
 	display: flex;
 	position: relative;
 	left: 165px;
 	background: transparent;
 	border: 0;
 }
-#projets button:hover {
+.edit-btn:hover {
 	color: #B1663C;
 	cursor: pointer;
 }
@@ -230,12 +230,12 @@ dialog {
 	outline: none;
 	padding: 0;
 }
+dialog::backdrop {
+	background: rgba(0, 0, 0, 0.3);
+}
 dialog form {
 	max-width: 570px;
 	padding: 25px 30px 15px 30px;
-}
-dialog::backdrop {
-	background: rgba(0, 0, 0, 0.3);
 }
 dialog .fa-xmark {
 	position: absolute;
@@ -276,8 +276,11 @@ dialog figcaption {
 dialog .fa-trash-can {
 	color: white;
 }
-#addPhoto {
+.modal-main-btn {
 	width: 237px;
+}
+.hidden {
+	display: none;
 }
 
 
@@ -324,7 +327,7 @@ dialog .fa-trash-can {
 	filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.09));
 }
 input[type="submit"],
-dialog button {
+.modal-main-btn {
 	font-family: "Syne";
 	font-weight: 700;
 	color: white;
