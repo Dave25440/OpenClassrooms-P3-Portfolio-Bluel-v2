@@ -19,6 +19,7 @@ portfolio.appendChild(filters);
 portfolio.appendChild(gallery);
 
 // Mode édition
+const admin = window.localStorage.getItem("localToken");
 const editTitle = document.querySelector(".edit-title");
 const logNav = document.getElementById("log-nav");
 const editBtn = document.querySelector(".edit-btn");
@@ -165,10 +166,7 @@ function worksDel () {
                 // Requête de suppression de travaux avec l'id du bouton
                 await fetch(`http://localhost:5678/api/works/${button.id}`, {
                     method: "DELETE",
-                    headers: {
-                        "Authorization": "Bearer my-token",
-                        "Content-Type": "application/json"
-                    }
+                    headers: { "Authorization": `Bearer ${admin}` }
                 })
                 .then(response => {
                     if (!response.ok) {
@@ -236,9 +234,6 @@ function modalEvents () {
 
 // Fonction de génération du "Mode édition"
 function editMode () {
-
-    // Récupération du token
-    const admin = window.localStorage.getItem("localToken");
 
     // Si présence du token: affichage du "Mode édition"
     if (admin) {
