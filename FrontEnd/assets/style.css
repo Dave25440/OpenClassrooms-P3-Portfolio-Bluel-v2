@@ -267,10 +267,11 @@ dialog figure {
 dialog img {
 	width: 100%;
 }
-dialog figcaption {
+.del-btn {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	color: white;
 	background-color: black;
 	border-radius: 2px;
 	width: 17px;
@@ -279,9 +280,8 @@ dialog figcaption {
 	top: 6px;
 	right: 5px;
 	margin: 0;
-}
-dialog .fa-trash-can {
-	color: white;
+	border: 0;
+	cursor: pointer;
 }
 .modal-main-btn {
 	width: 237px;

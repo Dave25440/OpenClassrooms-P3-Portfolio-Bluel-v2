@@ -29,6 +29,8 @@ const modal1 = document.getElementById("modal1");
 const xmark = document.querySelector(".xmark");
 let modalBlock = document.createElement("div");
 const addPhoto = document.getElementById("add-photo");
+
+// Fonction anonyme de fermeture de la modale
 const modalClosure = function () {
     modal.classList.remove("fadeOut");
     modal.removeEventListener("animationend", modalClosure);
@@ -153,10 +155,13 @@ function filtersList() {
 function modalGallery (modalBlock) {
     worksGallery(works, modalBlock);
 
-    // Ajout de l'icône trash-can Font Awesome à la balise figcaption
+    // Ajout d'un bouton avec l'icône trash-can Font Awesome à la balise figcaption
     modalBlock.querySelectorAll("figcaption")
         .forEach(
-            caption => caption.innerHTML = '<i class="fa-solid fa-trash-can fa-xs"></i>'
+            caption => caption.innerHTML = `
+                <button class="del-btn">
+                    <i class="fa-solid fa-trash-can fa-xs"></i>
+                </button>`
         );
 
     modal1.insertBefore(modalBlock, addPhoto);
@@ -189,10 +194,10 @@ function modalEvents () {
         }
     });
     modal.addEventListener("keydown", function (event) {
-        event.preventDefault();
 
         // Si touche enfoncée égale à Échap: animation et fermeture de la modale
         if (event.key === "Escape") {
+            event.preventDefault();
             modal.classList.add("fadeOut");
             modal.addEventListener("animationend", modalClosure);
         }
