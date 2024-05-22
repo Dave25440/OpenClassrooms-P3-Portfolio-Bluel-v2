@@ -233,6 +233,12 @@ dialog {
 	overflow: auto;
 	animation: fadeIn .5s;
 }
+dialog::backdrop {
+	background: transparent;
+}
+.fadeOut {
+	animation-name: fadeOut;
+}
 dialog form {
 	max-width: 570px;
 	padding: 25px 30px 15px 30px;
@@ -380,5 +386,15 @@ footer nav li {
 	to {
 		opacity: 1;
 		transform: translateY(0);
+	}
+}
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	to {
+		opacity: 0;
+		transform: translateY(+100vh);
 	}
 }

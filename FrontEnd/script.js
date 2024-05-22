@@ -25,8 +25,14 @@ const editBtn = document.querySelector(".edit-btn");
 // Fenêtre modale
 const modal = document.querySelector("dialog");
 const modal1 = document.getElementById("modal1");
+const xmark = document.querySelector(".xmark");
 let modalBlock = document.createElement("div");
 const addPhoto = document.getElementById("add-photo");
+const modalClosure = function () {
+    modal.classList.remove("fadeOut");
+    modal.removeEventListener("animationend", modalClosure);
+    modal.close();
+}
 
 
 // Fonction asynchrone de récupération des données de la route works
@@ -163,19 +169,22 @@ function modalEvents () {
         // Affichage de la modale
         modal.showModal();
     });
-    document.querySelector(".fa-xmark").addEventListener("click", function() {
+    xmark.addEventListener("click", function (event) {
+        event.preventDefault();
 
-        // Fermeture de la modale
-        modal.close();
+        // Animation et fermeture de la modale
+        modal.classList.add("fadeOut");
+        modal.addEventListener("animationend", modalClosure);
     });
     addPhoto.addEventListener("click", function (event) {
         event.preventDefault();
     });
     modal.addEventListener("click", function (event) {
 
-        // Si cible du clic égale à modale: fermeture de la modale
+        // Si cible du clic égale à modale: animation et fermeture de la modale
         if (event.target === modal) {
-            modal.close();
+            modal.classList.add("fadeOut");
+            modal.addEventListener("animationend", modalClosure);
         }
     });
 }
