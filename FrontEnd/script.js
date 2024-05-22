@@ -20,6 +20,7 @@ portfolio.appendChild(gallery);
 
 // Mode édition
 const editTitle = document.querySelector(".edit-title");
+const logNav = document.getElementById("log-nav");
 const editBtn = document.querySelector(".edit-btn");
 
 // Fenêtre modale
@@ -208,6 +209,11 @@ function editMode () {
     // Si présence du token: affichage du "Mode édition"
     if (admin) {
         editTitle.classList.remove("hidden");
+        logNav.innerText = "logout";
+        logNav.addEventListener("click", function () {
+            window.localStorage.removeItem("localToken");
+            logNav.href = "./index.html";
+        });
         editBtn.classList.remove("hidden");
         filters.innerHTML = "";
         modalGallery(modalBlock);
