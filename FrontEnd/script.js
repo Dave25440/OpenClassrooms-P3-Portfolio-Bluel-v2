@@ -71,6 +71,7 @@ function worksCategories(works, categoriesId, categories) {
 function worksGallery (works, gallery) {
     for (let i = 0; i < works.length; i++) {
         let figure = document.createElement("figure");
+        figure.id = works[i].id;
         let img = document.createElement("img");
 
         /* Récupération du chemin des images et
@@ -157,7 +158,8 @@ function worksDel () {
         .forEach(button =>
             button.addEventListener("click", function (event) {
                 event.preventDefault();
-                console.log(button);
+                button.id = button.closest("figure").id;
+                console.log(button.id);
             })
         );
 }
