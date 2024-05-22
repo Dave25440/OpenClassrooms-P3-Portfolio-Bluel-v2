@@ -81,7 +81,7 @@ function worksGallery (works, gallery) {
 
 
 // Fonction de création du bouton "Tous"
-function allButton () {
+function allBtn () {
     const allFilter = document.createElement("li");
     allFilter.classList.add("filter", "active");
     allFilter.innerText = "Tous";
@@ -90,9 +90,9 @@ function allButton () {
     // Ajout d'un écouteur d'évènements "click" sur le bouton "Tous"
     allFilter.addEventListener("click", function () {
 
-        // Récupération et suppression de la classe "active" courante
-        const filterButtons = document.querySelectorAll(".filter");
-        filterButtons.forEach(filter => filter.classList.remove("active"));
+        // Récupération des filtres et suppression de la classe "active" courante
+        document.querySelectorAll(".filter")
+            .forEach(filter => filter.classList.remove("active"));
 
         // Ajout de la classe "active" au bouton "Tous"
         allFilter.classList.add("active");
@@ -106,6 +106,7 @@ function allButton () {
 
 // Fonction de génération des filtres
 function filtersList() {
+    allBtn();
     worksCategories(works, categoriesId, categories);
 
     // Parcours de chaque item de l'objet categoriesId via une boucle
@@ -121,8 +122,8 @@ function filtersList() {
         filter.innerText = catArray[item-1];
 
         filter.addEventListener("click", function () {
-            const filterButtons = document.querySelectorAll(".filter");
-            filterButtons.forEach(filter => filter.classList.remove("active"));
+            document.querySelectorAll(".filter")
+                .forEach(filter => filter.classList.remove("active"));
             filter.classList.add("active");
 
             // Ajout du filtre du tableau works dans une constante
@@ -200,6 +201,5 @@ function editMode () {
 // Appels de fonctions
 worksData();
 worksGallery(works, gallery);
-allButton();
 filtersList();
 editMode();
