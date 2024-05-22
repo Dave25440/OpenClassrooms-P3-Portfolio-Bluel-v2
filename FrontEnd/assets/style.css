@@ -229,9 +229,9 @@ dialog {
 	border-radius: 10px;
 	outline: none;
 	padding: 0;
-}
-dialog::backdrop {
-	background: rgba(0, 0, 0, 0.3);
+	box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.3);
+	overflow: auto;
+	animation: fadeIn .5s;
 }
 dialog form {
 	max-width: 570px;
@@ -368,4 +368,17 @@ footer nav ul {
 footer nav li {
 	font-size: 14px;
 	font-weight: 300;
+}
+
+
+/* animations */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-100vh);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }

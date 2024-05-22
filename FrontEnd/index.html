@@ -12,7 +12,7 @@
             integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
             crossorigin="anonymous" referrerpolicy="no-referrer">
 		<link rel="stylesheet" href="./assets/style.css">
-		<script src="./script.js" defer></script>
+		<script type="module" src="./script.js"></script>
 	</head>
 	<body>
 		<aside class="edit-title hidden">
@@ -60,19 +60,19 @@
 						modifier
 					</button>
 				</div>
-				<dialog>
+				<dialog aria-labelledby="modalTitle1, modalTitle2">
 					<form method="dialog" id="modal1">
 						<button class="xmark">
 							<i class="fa-solid fa-xmark"></i>
 						</button>
-						<h3>Galerie photo</h3>
+						<h3 id="modalTitle1">Galerie photo</h3>
 						<button id="add-photo" class="modal-main-btn">Ajouter une photo</button>
 					</form>
 					<form method="dialog" id="modal2" class="hidden">
 						<button class="xmark">
 							<i class="fa-solid fa-xmark"></i>
 						</button>
-						<h3>Ajout photo</h3>
+						<h3 id="modalTitle2">Ajout photo</h3>
 						<button id="validate" class="modal-main-btn">Valider</button>
 					</form>
 				</dialog>

@@ -199,7 +199,7 @@ function editMode () {
 
 
 // Appels de fonctions
-worksData();
+await worksData();
 worksGallery(works, gallery);
 filtersList();
 editMode();
