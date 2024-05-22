@@ -169,7 +169,13 @@ function worksDel () {
                         "Authorization": "Bearer my-token",
                         "Content-Type": "application/json"
                     }
-                });
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Une erreur est survenue : la suppression n'a pas abouti");
+                    }
+                })
+                .catch(error => console.error(error.message));
             })
         );
 }
