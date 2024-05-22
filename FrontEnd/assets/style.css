@@ -237,12 +237,13 @@ dialog form {
 	max-width: 570px;
 	padding: 25px 30px 15px 30px;
 }
-dialog .fa-xmark {
+.xmark {
 	position: absolute;
 	right: 30px;
-}
-dialog .fa-xmark::before {
-	margin: 5px 7.5px;
+	background: transparent;
+	border: 0;
+	padding: 0;
+	margin: 4px 7.5px;
 	cursor: pointer;
 }
 dialog div {
