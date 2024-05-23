@@ -169,7 +169,10 @@ function worksDel () {
                     headers: { "Authorization": `Bearer ${admin}` }
                 })
                 .then(response => {
-                    if (!response.ok) {
+                    if (response.ok) {
+                        button.closest("figure").remove();
+                        // window.localStorage.removeItem("localWorks");
+                    } else {
                         throw new Error("Une erreur est survenue : la suppression n'a pas abouti");
                     }
                 })
