@@ -156,16 +156,16 @@ function filtersList() {
 // Fonction de suppression de travaux
 function worksDel () {
     modal.querySelectorAll(".del-btn")
-        .forEach(button =>
-            button.addEventListener("click", async function (event) {
+        .forEach(btn =>
+            btn.addEventListener("click", async function (event) {
                 event.preventDefault();
 
                 // Récupération et ajout de la valeur data-id de la balise figure au bouton
-                let buttonId = button.dataset.id;
-                buttonId = button.closest("figure").dataset.id;
+                let btnId = btn.dataset.id;
+                btnId = btn.closest("figure").dataset.id;
 
                 // Requête de suppression de travaux avec la valeur data-id du bouton
-                await fetch(`http://localhost:5678/api/works/${buttonId}`, {
+                await fetch(`http://localhost:5678/api/works/${btnId}`, {
                     method: "DELETE",
                     headers: { "Authorization": `Bearer ${admin}` }
                 })
@@ -175,7 +175,7 @@ function worksDel () {
 
                         /* Récupération et suppression des éléments
                         dont la valeur data-id est égale à celle du bouton */
-                        document.querySelectorAll(`[data-id="${buttonId}"]`)
+                        document.querySelectorAll(`[data-id="${btnId}"]`)
                             .forEach(figure => figure.remove());
 
                         // Purge des données en mémoire
