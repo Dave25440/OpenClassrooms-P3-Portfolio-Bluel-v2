@@ -180,6 +180,9 @@ function worksDel () {
 
                         // Purge des données en mémoire
                         window.localStorage.removeItem("localWorks");
+
+                        // Retour du focus sur la modale
+                        modal.focus();
                     } else {
                         throw new Error("Une erreur est survenue : la suppression n'a pas abouti");
                     }
