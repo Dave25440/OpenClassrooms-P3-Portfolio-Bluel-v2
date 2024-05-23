@@ -19,7 +19,7 @@ portfolio.appendChild(filters);
 portfolio.appendChild(gallery);
 
 // Mode édition
-const admin = window.localStorage.getItem("localToken");
+const admin = window.sessionStorage.getItem("localToken");
 const editTitle = document.querySelector(".edit-title");
 const logNav = document.getElementById("log-nav");
 const editBtn = document.querySelector(".edit-btn");
@@ -254,7 +254,7 @@ function editMode () {
         editTitle.classList.remove("hidden");
         logNav.innerText = "logout";
         logNav.addEventListener("click", function () {
-            window.localStorage.removeItem("localToken");
+            window.sessionStorage.removeItem("localToken");
             logNav.href = "./index.html";
         });
         editBtn.classList.remove("hidden");

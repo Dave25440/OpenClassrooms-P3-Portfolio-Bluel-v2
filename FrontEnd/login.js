@@ -51,7 +51,7 @@ function signIn () {
                 // Récupération du paramètre token de l'objet JSON
                 const token = object.token;
 
-                window.localStorage.setItem("localToken", token);
+                window.sessionStorage.setItem("localToken", token);
                 window.location.href = "./index.html";
             } else {
                 errorCheck(response);
