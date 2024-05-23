@@ -72,7 +72,7 @@ function worksCategories(works, categoriesId, categories) {
 function worksGallery (works, gallery) {
     for (let i = 0; i < works.length; i++) {
         let figure = document.createElement("figure");
-        figure.id = works[i].id;
+        figure.dataset.id = works[i].id;
         let img = document.createElement("img");
 
         /* Récupération du chemin des images et
@@ -160,18 +160,26 @@ function worksDel () {
             button.addEventListener("click", async function (event) {
                 event.preventDefault();
 
-                // Récupération et ajout de l'id de la balise figure au bouton
-                button.id = button.closest("figure").id;
+                // Récupération et ajout de la valeur data-id de la balise figure au bouton
+                let buttonId = button.dataset.id;
+                buttonId = button.closest("figure").dataset.id;
 
-                // Requête de suppression de travaux avec l'id du bouton
-                await fetch(`http://localhost:5678/api/works/${button.id}`, {
+                // Requête de suppression de travaux avec la valeur data-id du bouton
+                await fetch(`http://localhost:5678/api/works/${buttonId}`, {
                     method: "DELETE",
                     headers: { "Authorization": `Bearer ${admin}` }
                 })
+
                 .then(response => {
                     if (response.ok) {
-                        button.closest("figure").remove();
-                        // window.localStorage.removeItem("localWorks");
+
+                        /* Récupération et suppression des éléments
+                        dont la valeur data-id est égale à celle du bouton */
+                        document.querySelectorAll(`[data-id="${buttonId}"]`)
+                            .forEach(figure => figure.remove());
+
+                        // Purge des données en mémoire
+                        window.localStorage.removeItem("localWorks");
                     } else {
                         throw new Error("Une erreur est survenue : la suppression n'a pas abouti");
                     }
