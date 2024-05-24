@@ -61,25 +61,31 @@
 				<dialog aria-labelledby="modalTitle1, modalTitle2">
 					<form method="dialog" id="modal1">
 						<button class="xmark">
-							<i class="fa-solid fa-xmark"></i>
+							<i class="fa-solid fa-xmark fa-lg"></i>
 						</button>
 						<h3 id="modalTitle1">Galerie photo</h3>
 						<button id="add-photo" class="modal-main-btn" autofocus>Ajouter une photo</button>
 					</form>
 					<form method="dialog" id="modal2" class="hidden">
 						<button class="back-btn">
-							<i class="fa-solid fa-arrow-left fa-lg"></i>
+							<i class="fa-solid fa-arrow-left fa-xl"></i>
 						</button>
 						<button class="xmark">
-							<i class="fa-solid fa-xmark"></i>
+							<i class="fa-solid fa-xmark fa-lg"></i>
 						</button>
 						<h3 id="modalTitle2">Ajout photo</h3>
 						<div id="modal-block2" class="modal-block">
+							<figure class="add-block">
+								<i class="fa-regular fa-image"></i>
+								<figcaption>
+									<button id="add-block-btn" autofocus>+ Ajouter photo</button>
+									<p>jpg, png : 4mo max</p>
+								</figcaption>
+							</figure>
 							<label for="title">Titre</label>
 							<input type="text" name="title" id="title" class="details">
 							<label for="category">Catégorie</label>
 							<select name="category" id="category" class="details">
-								<option value="1">Lolilol</option>
 							</select>
 						</div>
 						<input type="submit" value="Valider" id="validate" class="modal-main-btn inactive">

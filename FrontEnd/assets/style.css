@@ -105,8 +105,7 @@ h2 {
 }
 h3 {
 	font-size: 26px;
-	margin-top: 24px;
-	margin-bottom: 45px;
+	margin: 35px 0;
 }
 nav ul {
 	display: flex;
@@ -256,11 +255,11 @@ dialog form {
 }
 .xmark {
 	right: 30px;
-	margin: 4px 7.5px;
+	margin: 4px 5.5px;
 }
 .back-btn {
 	left: 30px;
-	margin: 2.5px 3px;
+	margin: 2.5px 1.5px;
 }
 .modal-block {
 	margin: 0 75px;
@@ -271,6 +270,7 @@ dialog form {
 	grid-template-columns: repeat(5, 1fr);
 	grid-column-gap: 9px;
 	grid-row-gap: 29px;
+	padding-top: 10px;
 	padding-bottom: 67px;
 }
 #modal-block2 {
@@ -299,6 +299,35 @@ dialog img {
 	margin: 0;
 	border: 0;
 	cursor: pointer;
+}
+.add-block {
+	width: 420px;
+	background-color: #E8F1F6;
+	border-radius: 3px;
+	margin-bottom: 10px;
+}
+.add-block .fa-image {
+	font-size: 68px;
+	color: #B9C5CC;
+	margin: 19px 0 2px 0;
+}
+#add-block-btn {
+	font-family: "Work Sans";
+	font-size: 14px;
+	font-weight: 500;
+	color: #306685;
+	background-color: #CBD6DC;
+	width: 173px;
+	padding: 10px 0;
+	margin: 7px 0;
+	border-radius: 50px;
+	border: 0;
+	cursor: pointer;
+}
+.add-block p {
+	font-size: 10px;
+	color: #444444;
+	margin-bottom: 20px;
 }
 #modal-block2 label {
 	font-weight: 500;
