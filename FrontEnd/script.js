@@ -27,7 +27,8 @@ const editBtn = document.querySelector(".edit-btn");
 // Fenêtre modale
 const modal = document.querySelector("dialog");
 const modal1 = document.getElementById("modal1");
-const xmark = document.querySelector(".xmark");
+const modal2 = document.getElementById("modal2");
+const xmark = document.querySelectorAll(".xmark");
 let modalBlock = document.createElement("div");
 const addPhoto = document.getElementById("add-photo");
 
@@ -217,6 +218,12 @@ function modalEvents () {
 
         // Affichage de la modale
         modal.showModal();
+
+        if (modal1.classList = "hidden") {
+            modal1.classList.remove("hidden");
+            modal2.classList.add("hidden");
+            addPhoto.focus();
+        }
     });
     modal.addEventListener("click", function (event) {
 
@@ -235,13 +242,18 @@ function modalEvents () {
             modal.addEventListener("animationend", modalClosure);
         }
     });
-    xmark.addEventListener("click", function (event) {
-        event.preventDefault();
-        modal.classList.add("fadeOut");
-        modal.addEventListener("animationend", modalClosure);
-    });
+    xmark.forEach(btn =>
+        btn.addEventListener("click", function (event) {
+            event.preventDefault();
+            modal.classList.add("fadeOut");
+            modal.addEventListener("animationend", modalClosure);
+        })
+    );
     addPhoto.addEventListener("click", function (event) {
         event.preventDefault();
+        modal1.classList.add("hidden");
+        modal2.classList.remove("hidden");
+        modal.focus();
     });
 }
 

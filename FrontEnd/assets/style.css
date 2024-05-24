@@ -345,6 +345,7 @@ input[type="submit"],
 	border-radius: 60px;
 	border: 0;
 	padding: 10px 0;
+	cursor: pointer;
 }
 .forgot {
 	font-size: 14px;
