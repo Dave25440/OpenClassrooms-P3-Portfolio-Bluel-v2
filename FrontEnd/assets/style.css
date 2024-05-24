@@ -223,6 +223,9 @@ a {
 	color: #3D3D3D;
 	margin-top: 7px;
 }
+
+
+/* modal window */
 dialog {
 	text-align: center;
 	border: 0;
@@ -259,14 +262,16 @@ dialog form {
 	left: 30px;
 	margin: 2.5px 3px;
 }
-dialog div {
+.modal-block {
+	margin: 0 75px;
+	border-bottom: 1px solid #B3B3B3;
+}
+#modal-block1 {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	grid-column-gap: 9px;
 	grid-row-gap: 29px;
-	margin: 0 75px;
 	padding-bottom: 67px;
-	border-bottom: 1px solid #B3B3B3;
 }
 dialog figure {
 	position: relative;
@@ -290,8 +295,25 @@ dialog img {
 	border: 0;
 	cursor: pointer;
 }
+#modal-block2 {
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 47px;
+}
+#modal-block2 label {
+	font-weight: 500;
+	color: #3D3D3D;
+	text-align: left;
+	margin: 20px 0 10px 0;
+}
+#category {
+	background-color: white;
+}
 .modal-main-btn {
 	width: 237px;
+}
+#validate {
+	margin: 30px auto 40px auto;
 }
 .hidden {
 	display: none;
@@ -330,15 +352,18 @@ dialog img {
 #login label {
 	margin: 40px 0 10px 0;
 }
-.details {
-	height: 50px;
-	font-size: 16px;
+.details,
+#contact textarea {
+	font-family: "Work Sans";
+	font-size: 14px;
+	color: #444444;
+	padding: 15px;
 	border: 0;
 	filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.09));
 }
-#contact textarea {
-	border: 0;
-	filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.09));
+.details {
+	height: 50px;
+	padding: 0 15px;
 }
 .form-btn,
 .modal-main-btn {
@@ -347,7 +372,6 @@ dialog img {
 	color: white;
 	background-color: #1D6154;
 	margin : 40px auto 30px auto;
-	text-align: center;
 	border-radius: 60px;
 	border: 0;
 	padding: 10px 0;

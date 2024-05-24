@@ -30,7 +30,9 @@ const modal1 = document.getElementById("modal1");
 const modal2 = document.getElementById("modal2");
 const xmark = document.querySelectorAll(".xmark");
 const backBtn = document.querySelector(".back-btn");
-let modalBlock = document.createElement("div");
+const modalBlock1 = document.createElement("div");
+modalBlock1.id = "modal-block1";
+modalBlock1.classList.add("modal-block");
 const addPhoto = document.getElementById("add-photo");
 
 // Fonction anonyme de fermeture de la modale
@@ -196,11 +198,11 @@ function worksDel () {
 
 
 // Fonction de génération de la galerie de la modale
-function modalGallery (modalBlock) {
-    worksGallery(works, modalBlock);
+function modalGallery (modalBlock1) {
+    worksGallery(works, modalBlock1);
 
     // Ajout d'un bouton avec l'icône trash-can Font Awesome à la balise figcaption
-    modalBlock.querySelectorAll("figcaption")
+    modalBlock1.querySelectorAll("figcaption")
         .forEach(caption =>
             caption.innerHTML = `
                 <button class="del-btn">
@@ -208,7 +210,7 @@ function modalGallery (modalBlock) {
                 </button>`
         );
 
-    modal1.insertBefore(modalBlock, addPhoto);
+    modal1.insertBefore(modalBlock1, addPhoto);
     worksDel();
 }
 
@@ -278,7 +280,7 @@ function editMode () {
         });
         editBtn.classList.remove("hidden");
         filters.innerHTML = "";
-        modalGallery(modalBlock);
+        modalGallery(modalBlock1);
         modalEvents();
     }
 }
