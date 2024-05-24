@@ -78,13 +78,14 @@
 							<figure class="add-block">
 								<i class="fa-regular fa-image"></i>
 								<figcaption>
-									<button id="add-block-btn" autofocus>+ Ajouter photo</button>
+									<label for="upload" id="add-block-btn" tabindex="0">+ Ajouter photo</label>
+									<input type="file" name="upload" accept="image/jpeg, image/png" id="upload">
 									<p>jpg, png : 4mo max</p>
 								</figcaption>
 							</figure>
-							<label for="title">Titre</label>
+							<label for="title" class="details-label">Titre</label>
 							<input type="text" name="title" id="title" class="details">
-							<label for="category">Catégorie</label>
+							<label for="category" class="details-label">Catégorie</label>
 							<select name="category" id="category" class="details">
 							</select>
 						</div>

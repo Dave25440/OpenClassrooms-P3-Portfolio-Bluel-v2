@@ -270,8 +270,7 @@ dialog form {
 	grid-template-columns: repeat(5, 1fr);
 	grid-column-gap: 9px;
 	grid-row-gap: 29px;
-	padding-top: 10px;
-	padding-bottom: 67px;
+	padding: 10px 0 67px 0;
 }
 #modal-block2 {
 	display: flex;
@@ -312,24 +311,27 @@ dialog img {
 	margin: 19px 0 2px 0;
 }
 #add-block-btn {
+	display: block;
 	font-family: "Work Sans";
 	font-size: 14px;
 	font-weight: 500;
 	color: #306685;
 	background-color: #CBD6DC;
 	width: 173px;
-	padding: 10px 0;
-	margin: 7px 0;
+	padding: 11px 0;
+	margin: 7px auto;
 	border-radius: 50px;
-	border: 0;
 	cursor: pointer;
+}
+input[type=file] {
+	display: none;
 }
 .add-block p {
 	font-size: 10px;
 	color: #444444;
 	margin-bottom: 20px;
 }
-#modal-block2 label {
+.details-label {
 	font-weight: 500;
 	color: #3D3D3D;
 	text-align: left;

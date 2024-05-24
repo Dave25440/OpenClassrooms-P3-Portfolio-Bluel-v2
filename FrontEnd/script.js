@@ -34,6 +34,8 @@ const modalBlock1 = document.createElement("div");
 modalBlock1.id = "modal-block1";
 modalBlock1.classList.add("modal-block");
 const addPhoto = document.getElementById("add-photo");
+const addBlockBtn = document.getElementById("add-block-btn");
+const upload = document.getElementById("upload");
 
 // Fonction anonyme de fermeture de la modale
 const modalClosure = function () {
@@ -215,6 +217,14 @@ function modalGallery (modalBlock1) {
 }
 
 
+// Fonction d'ajout de travaux
+function worksAdd() {
+    modal2.addEventListener("submit", function (event) {
+        event.preventDefault();
+    });
+}
+
+
 // Fonction de gestion des évènements de la modale
 function modalEvents () {
     editBtn.addEventListener("click", function () {
@@ -262,7 +272,14 @@ function modalEvents () {
         event.preventDefault();
         modal1.classList.add("hidden");
         modal2.classList.remove("hidden");
-        modal.focus();
+        addBlockBtn.focus();
+        worksAdd();
+    });
+    addBlockBtn.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            upload.click();
+        }
     });
 }
 
