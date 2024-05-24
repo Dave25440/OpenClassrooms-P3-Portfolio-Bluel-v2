@@ -356,6 +356,9 @@ dialog img {
 .form-btn {
 	width: 180px;
 }
+.inactive {
+	background-color: #A7A7A7;
+}
 .forgot {
 	font-size: 14px;
 	font-weight: 500;
