@@ -225,6 +225,26 @@ function worksAdd() {
 }
 
 
+// Fonction de vérification de la taille de l'image sélectionnée
+function sizeCheck() {
+    upload.addEventListener("change", function (event) {
+
+        // Récupération de la taille maximum (4 Mo)
+        const maxSize = 4 * 1024 * 1024;
+
+        // Récupération de la première (et seule) image sélectionnée
+        const img = event.target.files[0];
+
+        /* Si image sélectionnée et taille de l'image supérieure à 4 Mo:
+        message d'alerte et réinitialisation de la sélection */
+        if (img && img.size > maxSize) {
+          alert("La taille de l'image ne doit pas excéder 4 Mo.");
+          event.target.value = "";
+        }
+    });
+}
+
+
 // Fonction de gestion des évènements de la modale
 function modalEvents () {
     editBtn.addEventListener("click", function () {
@@ -278,9 +298,12 @@ function modalEvents () {
     addBlockBtn.addEventListener("keydown", function (event) {
         if (event.key === "Enter" || event.key === " ") {
             event.preventDefault();
+
+            // Simulation d'un clic sur le bouton "upload"
             upload.click();
         }
     });
+    sizeCheck();
 }
 
 
