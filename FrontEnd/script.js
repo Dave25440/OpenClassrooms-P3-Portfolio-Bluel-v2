@@ -29,6 +29,7 @@ const modal = document.querySelector("dialog");
 const modal1 = document.getElementById("modal1");
 const modal2 = document.getElementById("modal2");
 const xmark = document.querySelectorAll(".xmark");
+const backBtn = document.querySelector(".back-btn");
 let modalBlock = document.createElement("div");
 const addPhoto = document.getElementById("add-photo");
 
@@ -249,6 +250,12 @@ function modalEvents () {
             modal.addEventListener("animationend", modalClosure);
         })
     );
+    backBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        modal1.classList.remove("hidden");
+        modal2.classList.add("hidden");
+        addPhoto.focus();
+    });
     addPhoto.addEventListener("click", function (event) {
         event.preventDefault();
         modal1.classList.add("hidden");
