@@ -243,14 +243,21 @@ dialog form {
 	max-width: 570px;
 	padding: 25px 30px 15px 30px;
 }
-.xmark {
+.xmark,
+.back-btn {
 	position: absolute;
-	right: 30px;
 	background: transparent;
 	border: 0;
 	padding: 0;
-	margin: 4px 7.5px;
 	cursor: pointer;
+}
+.xmark {
+	right: 30px;
+	margin: 4px 7.5px;
+}
+.back-btn {
+	left: 30px;
+	margin: 2.5px 3px;
 }
 dialog div {
 	display: grid;
