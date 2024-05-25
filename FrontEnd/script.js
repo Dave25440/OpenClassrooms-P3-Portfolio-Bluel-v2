@@ -225,21 +225,36 @@ function worksAdd() {
 }
 
 
-// Fonction de vérification de la taille de l'image sélectionnée
-function sizeCheck() {
+// Fonction de vérification du fichier sélectionné
+function fileCheck() {
     upload.addEventListener("change", function (event) {
+
+        // Récupération des types de fichier dans un tableau
+        const fileTypes= ["image/jpeg", "image/png"];
 
         // Récupération de la taille maximum (4 Mo)
         const maxSize = 4 * 1024 * 1024;
 
-        // Récupération de la première (et seule) image sélectionnée
-        const img = event.target.files[0];
+        // Récupération du premier (et seul) fichier sélectionné
+        const file = event.target.files[0];
 
-        /* Si image sélectionnée et taille de l'image supérieure à 4 Mo:
-        message d'alerte et réinitialisation de la sélection */
-        if (img && img.size > maxSize) {
-          alert("La taille de l'image ne doit pas excéder 4 Mo.");
-          event.target.value = "";
+        /* Si fichier sélectionné:
+        Si type du fichier ne se trouve pas dans le tableau:
+        message d'alerte et réinitialisation de la sélection
+        Si taille du fichier supérieure à 4 Mo:
+        message d'alerte et réinitialisation de la sélection
+        Sinon: message "Fichier ok" */
+        if (file) {
+            if (!fileTypes.includes(file.type)) {
+                alert("Les types de fichier autorisés sont jpeg et png.");
+                event.target.value = "";
+            }
+            if (file.size > maxSize) {
+                alert("La taille de l'image ne doit pas excéder 4 Mo.");
+                event.target.value = "";
+            } else {
+                console.log("Fichier ok");
+            }
         }
     });
 }
@@ -303,7 +318,7 @@ function modalEvents () {
             upload.click();
         }
     });
-    sizeCheck();
+    fileCheck();
 }
 
 
