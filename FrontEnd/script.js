@@ -275,10 +275,6 @@ function modalEvents () {
             modal2.classList.add("hidden");
             addPhoto.focus();
         }
-        if (fileConditions.classList.contains("alert")) {
-            fileConditions.classList.remove("alert");
-            fileConditions.innerText = "jpg, png : 4mo max";
-        }
     });
     modal.addEventListener("click", function (event) {
 
@@ -315,6 +311,10 @@ function modalEvents () {
         modal1.classList.add("hidden");
         modal2.classList.remove("hidden");
         addBlockBtn.focus();
+        if (fileConditions.classList.contains("alert")) {
+            fileConditions.classList.remove("alert");
+            fileConditions.innerText = "jpg, png : 4mo max";
+        }
         worksAdd();
     });
     addBlockBtn.addEventListener("keydown", function (event) {
