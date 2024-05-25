@@ -36,6 +36,7 @@ modalBlock1.classList.add("modal-block");
 const addPhoto = document.getElementById("add-photo");
 const addBlockBtn = document.getElementById("add-block-btn");
 const upload = document.getElementById("upload");
+const fileConditions = document.querySelector(".file-conditions");
 
 // Fonction anonyme de fermeture de la modale
 const modalClosure = function () {
@@ -240,17 +241,19 @@ function fileCheck() {
 
         /* Si fichier sélectionné:
         Si type du fichier ne se trouve pas dans le tableau:
-        message d'alerte et réinitialisation de la sélection
+        message d'erreur et réinitialisation de la sélection
         Si taille du fichier supérieure à 4 Mo:
-        message d'alerte et réinitialisation de la sélection
+        message d'erreur et réinitialisation de la sélection
         Sinon: message "Fichier ok" */
         if (file) {
             if (!fileTypes.includes(file.type)) {
-                alert("Les types de fichier autorisés sont jpeg et png.");
+                fileConditions.classList.add("alert");
+                fileConditions.innerText = "Les types de fichier autorisés sont jpeg et png.";
                 event.target.value = "";
             }
             if (file.size > maxSize) {
-                alert("La taille de l'image ne doit pas excéder 4 Mo.");
+                fileConditions.classList.add("alert");
+                fileConditions.innerText = "La taille de l'image ne doit pas excéder 4 Mo.";
                 event.target.value = "";
             } else {
                 console.log("Fichier ok");
@@ -267,10 +270,14 @@ function modalEvents () {
         // Affichage de la modale
         modal.showModal();
 
-        if (modal1.classList = "hidden") {
+        if (modal1.classList.contains("hidden")) {
             modal1.classList.remove("hidden");
             modal2.classList.add("hidden");
             addPhoto.focus();
+        }
+        if (fileConditions.classList.contains("alert")) {
+            fileConditions.classList.remove("alert");
+            fileConditions.innerText = "jpg, png : 4mo max";
         }
     });
     modal.addEventListener("click", function (event) {

@@ -326,10 +326,14 @@ dialog img {
 input[type=file] {
 	display: none;
 }
-.add-block p {
+.file-conditions {
 	font-size: 10px;
 	color: #444444;
 	margin-bottom: 20px;
+}
+.alert {
+	font-size: 14px;
+	color: red;
 }
 .details-label {
 	font-weight: 500;
