@@ -38,6 +38,7 @@ const addBlock = document.querySelector(".add-block");
 const addBlockBtn = document.getElementById("add-block-btn");
 const upload = document.getElementById("upload");
 const fileConditions = document.querySelector(".file-conditions");
+const addTitle = document.getElementById("title");
 
 // Fonction anonyme de fermeture de la modale
 const modalClosure = function () {
@@ -272,6 +273,8 @@ function fileCheck() {
 
                 // Libération de l'URL de l'objet file après le chargement de l'aperçu
                 preview.onload = () => URL.revokeObjectURL(fileURL);
+
+                addTitle.focus();
             }
         }
     });
