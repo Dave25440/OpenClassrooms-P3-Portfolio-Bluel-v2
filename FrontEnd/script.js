@@ -253,8 +253,7 @@ function fileCheck() {
                 fileConditions.classList.add("alert");
                 fileConditions.innerText = "Les types de fichier autorisés sont jpeg et png.";
                 event.target.value = "";
-            }
-            if (file.size > maxSize) {
+            } else if (file.size > maxSize) {
                 fileConditions.classList.add("alert");
                 fileConditions.innerText = "La taille de l'image ne doit pas excéder 4 Mo.";
                 event.target.value = "";
