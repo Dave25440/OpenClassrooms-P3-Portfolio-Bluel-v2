@@ -337,6 +337,7 @@ function modalEvents () {
         if (addBlock.querySelector("img")) {
             addBlock.querySelector("img").remove();
             addBlockTags.forEach(tag => tag.classList.remove("hidden"));
+            addBlockBtn.focus();
         }
         worksAdd();
     });
