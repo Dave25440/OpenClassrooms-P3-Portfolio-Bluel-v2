@@ -35,6 +35,7 @@ modalBlock1.id = "modal-block1";
 modalBlock1.classList.add("modal-block");
 const addPhoto = document.getElementById("add-photo");
 const addBlock = document.querySelector(".add-block");
+const addBlockTags = addBlock.querySelectorAll("*");
 const addBlockBtn = document.getElementById("add-block-btn");
 const upload = document.getElementById("upload");
 const fileConditions = document.querySelector(".file-conditions");
@@ -260,7 +261,7 @@ function fileCheck() {
             } else {
 
                 // Ajout de la classe "hidden" à tous les éléments de la balise "addBlock"
-                addBlock.querySelectorAll("*").forEach(tag => tag.classList.add("hidden"));
+                addBlockTags.forEach(tag => tag.classList.add("hidden"));
 
                 const preview = document.createElement("img");
 
@@ -332,6 +333,10 @@ function modalEvents () {
         if (fileConditions.classList.contains("alert")) {
             fileConditions.classList.remove("alert");
             fileConditions.innerText = "jpg, png : 4mo max";
+        }
+        if (addBlock.querySelector("img")) {
+            addBlock.querySelector("img").remove();
+            addBlockTags.forEach(tag => tag.classList.remove("hidden"));
         }
         worksAdd();
     });
