@@ -34,6 +34,7 @@ const modalBlock1 = document.createElement("div");
 modalBlock1.id = "modal-block1";
 modalBlock1.classList.add("modal-block");
 const addPhoto = document.getElementById("add-photo");
+const addBlock = document.querySelector(".add-block");
 const addBlockBtn = document.getElementById("add-block-btn");
 const upload = document.getElementById("upload");
 const fileConditions = document.querySelector(".file-conditions");
@@ -244,7 +245,7 @@ function fileCheck() {
         message d'erreur et réinitialisation de la sélection
         Si taille du fichier supérieure à 4 Mo:
         message d'erreur et réinitialisation de la sélection
-        Sinon: message "Fichier ok" */
+        Sinon: génération de l'aperçu */
         if (file) {
             if (!fileTypes.includes(file.type)) {
                 fileConditions.classList.add("alert");
@@ -256,7 +257,21 @@ function fileCheck() {
                 fileConditions.innerText = "La taille de l'image ne doit pas excéder 4 Mo.";
                 event.target.value = "";
             } else {
-                console.log("Fichier ok");
+
+                // Ajout de la classe "hidden" à tous les éléments de la balise "addBlock"
+                addBlock.querySelectorAll("*").forEach(tag => tag.classList.add("hidden"));
+
+                const preview = document.createElement("img");
+
+                // Création d'une URL depuis l'objet file
+                const fileURL = URL.createObjectURL(file);
+
+                preview.src = fileURL;
+                preview.alt = file.name;
+                addBlock.appendChild(preview);
+
+                // Libération de l'URL de l'objet file après le chargement de l'aperçu
+                preview.onload = () => URL.revokeObjectURL(fileURL);
             }
         }
     });

@@ -301,6 +301,7 @@ dialog img {
 }
 .add-block {
 	width: 420px;
+	max-height: 169px;
 	background-color: #E8F1F6;
 	border-radius: 3px;
 	margin-bottom: 10px;
@@ -334,6 +335,10 @@ input[type=file] {
 .alert {
 	font-size: 14px;
 	color: red;
+}
+.add-block img {
+	width: auto;
+	height: 100%;
 }
 .details-label {
 	font-weight: 500;
