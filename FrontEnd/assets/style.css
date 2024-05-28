@@ -338,6 +338,7 @@ input[type=file] {
 }
 .add-block img {
 	width: auto;
+	max-width: 420px;
 	height: 100%;
 }
 .details-label {
