@@ -340,6 +340,9 @@ function modalEvents () {
             addBlockTags.forEach(tag => tag.classList.remove("hidden"));
             addBlockBtn.focus();
         }
+        if (category.value !== "") {
+            category.value = "";
+        }
         worksAdd();
     });
     addBlockBtn.addEventListener("keydown", function (event) {
