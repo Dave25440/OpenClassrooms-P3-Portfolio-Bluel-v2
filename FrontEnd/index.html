@@ -79,14 +79,16 @@
 								<i class="fa-regular fa-image"></i>
 								<figcaption>
 									<label for="upload" id="add-block-btn" tabindex="0">+ Ajouter photo</label>
-									<input type="file" name="upload" accept="image/jpeg, image/png" id="upload">
+									<input type="file" name="upload" accept="image/jpeg, image/png" id="upload" required>
 									<p id="file-conditions">jpg, png : 4mo max</p>
 								</figcaption>
 							</figure>
 							<label for="title" class="details-label">Titre</label>
-							<input type="text" name="title" id="title" class="details">
+							<input type="text" name="title" id="title" class="details" required>
 							<label for="category" class="details-label">Catégorie</label>
-							<select name="category" id="category" class="details"></select>
+							<select name="category" id="category" class="details" required>
+								<option value="">Choisir catégorie</option>
+							</select>
 						</div>
 						<input type="submit" value="Valider" id="validate" class="modal-main-btn inactive">
 					</form>
