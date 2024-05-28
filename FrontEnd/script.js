@@ -41,6 +41,7 @@ const upload = document.getElementById("upload");
 const alert = document.createElement("p");
 alert.classList.add("alert");
 const addTitle = document.getElementById("title");
+const addCategory = document.getElementById("category");
 
 // Fonction anonyme de fermeture de la modale
 const modalClosure = function () {
@@ -350,6 +351,12 @@ function modalEvents () {
         }
     });
     fileCheck();
+    for (let item of categories) {
+        let category = document.createElement("option");
+        category.value = item;
+        category.innerText = item;
+        addCategory.appendChild(category);
+    }
 }
 
 
