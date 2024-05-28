@@ -38,7 +38,8 @@ const addBlock = document.querySelector(".add-block");
 const addBlockTags = addBlock.querySelectorAll("*");
 const addBlockBtn = document.getElementById("add-block-btn");
 const upload = document.getElementById("upload");
-const fileConditions = document.querySelector(".file-conditions");
+const alert = document.createElement("p");
+alert.classList.add("alert");
 const addTitle = document.getElementById("title");
 
 // Fonction anonyme de fermeture de la modale
@@ -250,14 +251,15 @@ function fileCheck() {
         Sinon: génération de l'aperçu */
         if (file) {
             if (!fileTypes.includes(file.type)) {
-                fileConditions.classList.add("alert");
-                fileConditions.innerText = "Les types de fichier autorisés sont jpeg et png.";
+                alert.innerText = "Les types de fichier autorisés sont jpeg et png.";
+                addBlock.appendChild(alert);
                 event.target.value = "";
             } else if (file.size > maxSize) {
-                fileConditions.classList.add("alert");
-                fileConditions.innerText = "La taille de l'image ne doit pas excéder 4 Mo.";
+                alert.innerText = "La taille de l'image ne doit pas excéder 4 Mo.";
+                addBlock.appendChild(alert);
                 event.target.value = "";
             } else {
+                alert.remove();
 
                 // Ajout de la classe "hidden" à tous les éléments de la balise "addBlock"
                 addBlockTags.forEach(tag => tag.classList.add("hidden"));
@@ -329,9 +331,8 @@ function modalEvents () {
         modal1.classList.add("hidden");
         modal2.classList.remove("hidden");
         addBlockBtn.focus();
-        if (fileConditions.classList.contains("alert")) {
-            fileConditions.classList.remove("alert");
-            fileConditions.innerText = "jpg, png : 4mo max";
+        if (alert.textContent !== "") {
+            alert.innerText = "";
         }
         if (addBlock.querySelector("img")) {
             addBlock.querySelector("img").remove();
