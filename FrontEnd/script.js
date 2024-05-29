@@ -226,6 +226,13 @@ function modalGallery (modalBlock1) {
 
 // Fonction d'ajout de travaux
 function worksAdd() {
+    modal2.addEventListener("change", function () {
+        if (addBlock.querySelector("img") && addTitle.value && addCategory.value) {
+            validate.classList.remove("inactive");
+        } else if (!validate.classList.contains("inactive")) {
+            validate.classList.add("inactive");
+        }
+    });
     modal2.addEventListener("submit", function (event) {
         event.preventDefault();
         if (!addBlock.querySelector("img")) {
@@ -362,7 +369,7 @@ function modalEvents () {
         modal1.classList.add("hidden");
         modal2.classList.remove("hidden");
         addBlockBtn.focus();
-        if (alert.textContent !== "") {
+        if (alert.textContent) {
             alert.innerText = "";
         }
         if (addBlock.querySelector("img")) {
@@ -370,8 +377,14 @@ function modalEvents () {
             addBlockTags.forEach(tag => tag.classList.remove("hidden"));
             addBlockBtn.focus();
         }
-        if (category.value !== "") {
+        if (addTitle.value) {
+            addTitle.value = "";
+        }
+        if (category.value) {
             category.value = "";
+        }
+        if (!validate.classList.contains("inactive")) {
+            validate.classList.add("inactive");
         }
     });
     addBlockBtn.addEventListener("keydown", function (event) {
