@@ -234,10 +234,10 @@ function worksAdd() {
 
 // Fonction de génération des catégories
 function categoriesList() {
-    for (let item of categories) {
+    for (let i = 0; i < categories.size; i++) {
         let category = document.createElement("option");
-        category.value = item;
-        category.innerText = item;
+        category.value = Array.from(categoriesId)[i];
+        category.innerText = Array.from(categories)[i];
         addCategory.appendChild(category);
     }
     addCategory.addEventListener("focus", function () {
