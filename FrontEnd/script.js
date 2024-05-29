@@ -228,6 +228,10 @@ function modalGallery (modalBlock1) {
 function worksAdd() {
     modal2.addEventListener("submit", function (event) {
         event.preventDefault();
+        if (!addBlock.querySelector("img")) {
+            alert.innerText = "Veuillez sélectionner un fichier.";
+            addBlock.appendChild(alert);
+        }
     });
 }
 
@@ -248,6 +252,11 @@ function categoriesList() {
     });
     addCategory.addEventListener("change", function () {
         validate.focus();
+    });
+    addCategory.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            validate.focus();
+        }
     });
 }
 
@@ -374,6 +383,12 @@ function modalEvents () {
         }
     });
     fileCheck();
+    addTitle.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            addCategory.focus();
+        }
+    });
     categoriesList();
     worksAdd();
 }
