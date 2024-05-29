@@ -233,11 +233,24 @@ function worksAdd() {
             validate.classList.add("inactive");
         }
     });
-    modal2.addEventListener("submit", function (event) {
+    modal2.addEventListener("submit", async function (event) {
         event.preventDefault();
         if (!addBlock.querySelector("img")) {
             alert.innerText = "Veuillez sélectionner un fichier.";
             addBlock.appendChild(alert);
+        } else {
+
+            // Création d'un objet FormData et ajout des champs requis pour l'API
+            const modal2Data = new FormData();
+            modal2Data.append("image", upload.files[0]);
+            modal2Data.append("title", addTitle.value);
+            modal2Data.append("category", addCategory.value);
+
+            await fetch("http://localhost:5678/api/works/", {
+                method: "POST",
+                headers: { "Authorization": `Bearer ${admin}` },
+                body: modal2Data
+            });
         }
     });
 }
