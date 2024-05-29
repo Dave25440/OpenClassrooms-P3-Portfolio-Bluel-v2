@@ -209,7 +209,7 @@ function worksDel () {
 
 
 // Fonction de génération de la galerie de la modale
-function modalGallery (modalBlock1) {
+function modalGallery (works, modalBlock1) {
     worksGallery(works, modalBlock1);
 
     // Ajout d'un bouton avec l'icône trash-can Font Awesome à la balise figcaption
@@ -264,10 +264,10 @@ function worksAdd() {
                     success.innerText = "Projet ajouté avec succès";
                     portfolio.insertBefore(success, filters);
 
-                    /* Appel de la fonction worksGallery avec un tableau contenant l'objet JSON
-                    pour l'ajouter à la galerie principale et celle de la modale */
+                    /* Appels des fonctions worksGallery et modalGallery avec un tableau contenant
+                    l'objet JSON pour l'ajouter à la galerie principale et celle de la modale */
                     worksGallery([work], gallery);
-                    worksGallery([work], modalBlock1);
+                    modalGallery([work], modalBlock1);
 
                     window.localStorage.removeItem("localWorks");
                     window.location.href = "#portfolio";
@@ -461,7 +461,7 @@ function editMode () {
         });
         editBtn.classList.remove("hidden");
         filters.innerHTML = "";
-        modalGallery(modalBlock1);
+        modalGallery(works, modalBlock1);
         modalEvents();
     }
 }
