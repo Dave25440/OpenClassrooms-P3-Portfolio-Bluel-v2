@@ -253,12 +253,22 @@ function worksAdd() {
                 headers: { "Authorization": `Bearer ${admin}` },
                 body: modal2Data
             })
-            .then(response => {
-                if (response.ok) {      
-                    success.innerText = "Projet ajouté avec succès";
-                    portfolio.insertBefore(success, filters);
+            .then(async response => {
+                if (response.ok) {
+
+                    // Récupération des données de la réponse dans un objet JSON
+                    const work = await response.json();
+
                     modal.classList.add("fadeOut");
                     modal.addEventListener("animationend", modalClosure);
+                    success.innerText = "Projet ajouté avec succès";
+                    portfolio.insertBefore(success, filters);
+
+                    /* Appel de la fonction worksGallery avec un tableau contenant l'objet JSON
+                    pour l'ajouter à la galerie principale et celle de la modale */
+                    worksGallery([work], gallery);
+                    worksGallery([work], modalBlock1);
+
                     window.localStorage.removeItem("localWorks");
                     window.location.href = "#portfolio";
                 } else {
