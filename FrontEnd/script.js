@@ -42,6 +42,7 @@ const alert = document.createElement("p");
 alert.classList.add("alert");
 const addTitle = document.getElementById("title");
 const addCategory = document.getElementById("category");
+const validate = document.getElementById("validate");
 
 // Fonction anonyme de fermeture de la modale
 const modalClosure = function () {
@@ -231,6 +232,26 @@ function worksAdd() {
 }
 
 
+// Fonction de génération des catégories
+function categoriesList() {
+    for (let item of categories) {
+        let category = document.createElement("option");
+        category.value = item;
+        category.innerText = item;
+        addCategory.appendChild(category);
+    }
+    addCategory.addEventListener("focus", function () {
+        addCategory.classList.add("select");
+    });
+    addCategory.addEventListener("blur", function () {
+        addCategory.classList.remove("select");
+    });
+    addCategory.addEventListener("change", function () {
+        validate.focus();
+    });
+}
+
+
 // Fonction de vérification du fichier sélectionné
 function fileCheck() {
     upload.addEventListener("change", function (event) {
@@ -343,7 +364,6 @@ function modalEvents () {
         if (category.value !== "") {
             category.value = "";
         }
-        worksAdd();
     });
     addBlockBtn.addEventListener("keydown", function (event) {
         if (event.key === "Enter" || event.key === " ") {
@@ -354,12 +374,8 @@ function modalEvents () {
         }
     });
     fileCheck();
-    for (let item of categories) {
-        let category = document.createElement("option");
-        category.value = item;
-        category.innerText = item;
-        addCategory.appendChild(category);
-    }
+    categoriesList();
+    worksAdd();
 }
 
 
