@@ -250,7 +250,17 @@ function worksAdd() {
                 method: "POST",
                 headers: { "Authorization": `Bearer ${admin}` },
                 body: modal2Data
-            });
+            })
+            .then(response => {
+                if (response.ok) {
+                    modal.classList.add("fadeOut");
+                    modal.addEventListener("animationend", modalClosure);
+                    window.localStorage.removeItem("localWorks");
+                } else {
+                    throw new Error("Une erreur est survenue : le projet n'a pas été ajouté");
+                }
+            })
+            .catch(error => console.error(error.message));
         }
     });
 }
