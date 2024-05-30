@@ -175,34 +175,40 @@ function worksDel() {
             btn.addEventListener("click", async function (event) {
                 event.preventDefault();
 
-                // Récupération et ajout de la valeur data-id de la balise figure au bouton
-                let btnId = btn.dataset.id;
-                btnId = btn.closest("figure").dataset.id;
+                // Création d'une boîte de dialogue pour confirmer l'opération de suppression
+                const delConfirm = confirm("Confirmez-vous la suppression du projet ?");
 
-                // Requête de suppression de travaux avec la valeur data-id du bouton
-                await fetch(`http://localhost:5678/api/works/${btnId}`, {
-                    method: "DELETE",
-                    headers: { "Authorization": `Bearer ${admin}` }
-                })
+                if (delConfirm) {
 
-                .then(response => {
-                    if (response.ok) {
+                    // Récupération et ajout de la valeur data-id de la balise figure au bouton
+                    let btnId = btn.dataset.id;
+                    btnId = btn.closest("figure").dataset.id;
 
-                        /* Récupération et suppression des éléments
-                        dont la valeur data-id est égale à celle du bouton */
-                        document.querySelectorAll(`[data-id="${btnId}"]`)
-                            .forEach(figure => figure.remove());
+                    // Requête de suppression de travaux avec la valeur data-id du bouton
+                    await fetch(`http://localhost:5678/api/works/${btnId}`, {
+                        method: "DELETE",
+                        headers: { "Authorization": `Bearer ${admin}` }
+                    })
 
-                        // Purge des données en mémoire
-                        window.localStorage.removeItem("localWorks");
+                    .then(response => {
+                        if (response.ok) {
 
-                        // Retour du focus sur la modale
-                        modal.focus();
-                    } else {
-                        throw new Error("Une erreur est survenue : la suppression n'a pas abouti");
-                    }
-                })
-                .catch(error => console.error(error.message));
+                            /* Récupération et suppression des éléments
+                            dont la valeur data-id est égale à celle du bouton */
+                            document.querySelectorAll(`[data-id="${btnId}"]`)
+                                .forEach(figure => figure.remove());
+
+                            // Purge des données en mémoire
+                            window.localStorage.removeItem("localWorks");
+
+                            // Retour du focus sur la modale
+                            modal.focus();
+                        } else {
+                            throw new Error("Une erreur est survenue : la suppression n'a pas abouti");
+                        }
+                    })
+                    .catch(error => console.error(error.message));
+                }
             })
         );
 }
