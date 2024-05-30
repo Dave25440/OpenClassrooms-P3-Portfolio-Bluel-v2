@@ -55,7 +55,7 @@ const modalClosure = function () {
 
 
 // Fonction asynchrone de récupération des données de la route works
-async function worksData () {
+async function worksData() {
 
     /* Si aucune donnée en mémoire: téléchargement et stockage des données,
     sinon: écriture des données en JavaScript */
@@ -84,7 +84,7 @@ function worksCategories(works, categoriesId, categories) {
 
 
 // Fonction de génération de la galerie photos
-function worksGallery (works, gallery) {
+function worksGallery(works, gallery) {
     for (let i = 0; i < works.length; i++) {
         let figure = document.createElement("figure");
         figure.dataset.id = works[i].id;
@@ -107,7 +107,7 @@ function worksGallery (works, gallery) {
 
 
 // Fonction de création du bouton "Tous"
-function allBtn () {
+function allBtn() {
     const allFilter = document.createElement("li");
     allFilter.classList.add("filter", "active");
     allFilter.innerText = "Tous";
@@ -169,7 +169,7 @@ function filtersList() {
 
 
 // Fonction de suppression de travaux
-function worksDel () {
+function worksDel() {
     modal.querySelectorAll(".del-btn")
         .forEach(btn =>
             btn.addEventListener("click", async function (event) {
@@ -209,7 +209,7 @@ function worksDel () {
 
 
 // Fonction de génération de la galerie de la modale
-function modalGallery (works, modalBlock1) {
+function modalGallery(works, modalBlock1) {
     worksGallery(works, modalBlock1);
 
     // Ajout d'un bouton avec l'icône trash-can Font Awesome à la balise figcaption
@@ -223,6 +223,23 @@ function modalGallery (works, modalBlock1) {
 
     modal1.insertBefore(modalBlock1, addPhoto);
     worksDel();
+}
+
+
+// Fonction de vérification du titre renseigné
+function titleCheck(title) {
+
+    /* Ajout d'une expression régulière qui vérifie que la chaîne n'est pas
+    composée uniquement d'espaces et a une longueur allant de 2 à 60 caractères */
+    const titleRegExp = new RegExp("^(?!\\s*$).{2,60}$");
+
+    // Si test de l'expression sur paramètre ok: renvoie vrai
+    if (titleRegExp.test(title)) {
+        return true;
+    }
+
+    // Renvoie faux
+    return false;
 }
 
 
@@ -360,7 +377,7 @@ function fileCheck() {
 
 
 // Fonction de gestion des évènements de la modale
-function modalEvents () {
+function modalEvents() {
     editBtn.addEventListener("click", function () {
         if (success.textContent) {
             success.remove();
@@ -449,7 +466,7 @@ function modalEvents () {
 
 
 // Fonction de génération du "Mode édition"
-function editMode () {
+function editMode() {
 
     // Si présence du token: affichage du "Mode édition"
     if (admin) {

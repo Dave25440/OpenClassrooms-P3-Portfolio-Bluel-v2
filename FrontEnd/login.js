@@ -1,5 +1,5 @@
 // Fonction de génération du paragraphe "error"
-function errorCheck (response) {
+function errorCheck(response) {
 
     // Récupération du paragraphe "error"
     let error = document.querySelector(".error");
@@ -18,7 +18,7 @@ function errorCheck (response) {
 
 
 // Fonction d'authentification
-function signIn () {
+function signIn() {
     const loginForm = document.getElementById("login-form");
     loginForm.addEventListener("submit", async function (event) {
 
