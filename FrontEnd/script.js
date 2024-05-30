@@ -246,7 +246,8 @@ function titleCheck(title) {
 // Fonction d'ajout de travaux
 function worksAdd() {
     modal2.addEventListener("change", function () {
-        if (addBlock.querySelector("img") && addTitle.value && addCategory.value) {
+        if (addBlock.querySelector("img") && addTitle.value
+        && titleCheck(addTitle.value) && addCategory.value) {
             validate.classList.remove("inactive");
         } else if (!validate.classList.contains("inactive")) {
             validate.classList.add("inactive");
@@ -257,6 +258,8 @@ function worksAdd() {
         if (!addBlock.querySelector("img")) {
             alert.innerText = "Veuillez sélectionner un fichier.";
             addBlock.appendChild(alert);
+        } else if (!titleCheck(addTitle.value)) {
+            addTitle.value = "de 2 à 60 caractères : pas uniquement des espaces";
         } else {
 
             // Création d'un objet FormData et ajout des champs requis pour l'API
