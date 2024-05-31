@@ -53,6 +53,12 @@ const modalClosure = function () {
     modal.close();
 }
 
+// Annulation du comportement par défaut du formulaire "Contact"
+const contactForm = document.getElementById("contact-form");
+contactForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+});
+
 
 // Fonction asynchrone de récupération des données de la route works
 async function worksData() {
