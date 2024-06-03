@@ -33,6 +33,7 @@ const backBtn = document.querySelector(".back-btn");
 const modalBlock1 = document.createElement("div");
 modalBlock1.id = "modal-block1";
 modalBlock1.classList.add("modal-block");
+const modalBlock2 = document.getElementById("modal-block2");
 const addPhoto = document.getElementById("add-photo");
 const addBlock = document.querySelector(".add-block");
 const addBlockTags = addBlock.querySelectorAll("*");
@@ -41,6 +42,8 @@ const upload = document.getElementById("upload");
 const alert = document.createElement("p");
 alert.classList.add("alert");
 const addTitle = document.getElementById("title");
+const titleAlert = document.createElement("p");
+titleAlert.id = "title-alert";
 const addCategory = document.getElementById("category");
 const validate = document.getElementById("validate");
 
@@ -263,13 +266,19 @@ function worksAdd() {
             validate.classList.add("inactive");
         }
     });
+    addTitle.addEventListener("change", function () {
+        if (titleCheck(addTitle.value) && titleAlert.textContent) {
+            titleAlert.remove();
+        }
+    });
     modal2.addEventListener("submit", async function (event) {
         event.preventDefault();
         if (!addBlock.querySelector("img")) {
             alert.innerText = "Veuillez sélectionner un fichier.";
             addBlock.appendChild(alert);
         } else if (!titleCheck(addTitle.value)) {
-            addTitle.value = "de 2 à 60 caractères : pas uniquement des espaces";
+            titleAlert.innerText = "de 2 à 60 caractères : pas uniquement des espaces";
+            modalBlock2.insertBefore(titleAlert, document.querySelector('[for="category"]'));
         } else {
 
             // Création d'un objet FormData et ajout des champs requis pour l'API
@@ -446,6 +455,9 @@ function modalEvents() {
         }
         if (addTitle.value) {
             addTitle.value = "";
+        }
+        if (titleAlert.textContent) {
+            titleAlert.remove();
         }
         if (category.value) {
             category.value = "";
