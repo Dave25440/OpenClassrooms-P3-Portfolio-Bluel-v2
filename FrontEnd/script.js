@@ -11,8 +11,6 @@ const categories = new Set();
 const portfolio = document.getElementById("portfolio");
 
 // Création et ajout des blocs et éléments de la section "portfolio"
-const success = document.createElement("p");
-success.id = "success";
 const filters = document.createElement("ul");
 filters.classList.add("filters");
 const gallery = document.createElement("div");
@@ -293,14 +291,13 @@ function worksAdd() {
 
                     modal.classList.add("fadeOut");
                     modal.addEventListener("animationend", modalClosure);
-                    success.innerText = "Projet ajouté avec succès";
-                    portfolio.insertBefore(success, filters);
 
                     /* Appels des fonctions worksGallery et modalGallery avec un tableau contenant
                     l'objet JSON pour l'ajouter à la galerie principale et celle de la modale */
                     worksGallery([work], gallery);
                     modalGallery([work], modalBlock1);
 
+                    window.alert("Projet ajouté avec succès");
                     window.localStorage.removeItem("localWorks");
                     window.location.href = "#portfolio";
                 } else {
@@ -394,9 +391,6 @@ function fileCheck() {
 // Fonction de gestion des évènements de la modale
 function modalEvents() {
     editBtn.addEventListener("click", function () {
-        if (success.textContent) {
-            success.remove();
-        }
 
         // Affichage de la modale
         modal.showModal();
