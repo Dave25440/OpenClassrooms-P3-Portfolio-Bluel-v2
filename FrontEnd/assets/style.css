@@ -214,10 +214,11 @@ a {
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
-	align-items: end;
 }
 .gallery img {
 	width: 100%;
+	height: 407px;
+	object-fit: cover;
 }
 .gallery figcaption {
 	color: #3D3D3D;
@@ -283,6 +284,8 @@ dialog figure {
 }
 dialog img {
 	width: 100%;
+	height: 102.6px;
+	object-fit: cover;
 }
 .del-btn {
 	display: flex;
@@ -339,9 +342,10 @@ input[type=file] {
 }
 .add-block img {
 	display: block;
-	max-height: 169px;
-	object-fit: contain;
-	border-radius: 3px;
+	width: 129px;
+	height: 169px;
+	object-fit: cover;
+	margin: auto;
 }
 .details-label {
 	font-weight: 500;
