@@ -2,7 +2,7 @@
 
 // Récupération des données de la route works dans un objet JSON
 const worksData = await fetch("http://localhost:5678/api/works/");
-let works = await worksData.json();
+const works = await worksData.json();
 
 // Création de deux objets Set pour l'id et le nom des catégories
 const categoriesId = new Set();
@@ -127,8 +127,8 @@ function filtersList() {
     allBtn();
     worksCategories(works, categoriesId, categories);
 
-    // Parcours de chaque item de l'objet categoriesId via une boucle
-    for (let item of categoriesId) {
+    // Parcours de l'objet categoriesId via une boucle
+    for (let i = 0; i < categoriesId.size; i++) {
         let filter = document.createElement("li");
         filter.classList.add("filter");
         filters.appendChild(filter);
@@ -136,8 +136,8 @@ function filtersList() {
         // Récupération des noms des catégories dans un tableau
         const catArray = Array.from(categories);
 
-        // Ajout du nom (indice-1) à la balise "filter"
-        filter.innerText = catArray[item-1];
+        // Ajout du nom à la balise "filter"
+        filter.innerText = catArray[i];
 
         filter.addEventListener("click", function () {
             document.querySelectorAll(".filter")
@@ -148,8 +148,8 @@ function filtersList() {
             const categoriesFilter = works.filter(function (object) {
 
                 /* Renvoi des objets dont l'id de la catégorie
-                est égal à l'item de l'objet categoriesId */
-                return object.category.id === item;
+                est égal à celui du tableau categoriesId */
+                return object.category.id === Array.from(categoriesId)[i];
             });
             gallery.innerHTML = "";
 
