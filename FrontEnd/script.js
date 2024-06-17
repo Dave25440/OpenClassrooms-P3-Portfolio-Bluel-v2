@@ -300,12 +300,14 @@ function worksAdd() {
 }
 
 
-// Fonction de génération des catégories
-function categoriesList() {
-    for (let i = 0; i < categories.size; i++) {
+// Fonction asynchrone de génération des catégories
+async function categoriesList() {
+    const categoriesData = await fetch("http://localhost:5678/api/categories/");
+    const categoriesRoute  = await categoriesData.json();
+    for (let i = 0; i < categoriesRoute.length; i++) {
         let category = document.createElement("option");
-        category.value = Array.from(categoriesId)[i];
-        category.innerText = Array.from(categories)[i];
+        category.value = categoriesRoute[i].id;
+        category.innerText = categoriesRoute[i].name;
         addCategory.appendChild(category);
     }
     addCategory.addEventListener("focus", function () {
