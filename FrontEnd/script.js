@@ -1,7 +1,8 @@
 // Variables globales
 
-// Récupération des données en mémoire
-let works = window.localStorage.getItem("localWorks");
+// Récupération des données de la route works dans un objet JSON
+const worksData = await fetch("http://localhost:5678/api/works/");
+let works = await worksData.json();
 
 // Création de deux objets Set pour l'id et le nom des catégories
 const categoriesId = new Set();
@@ -59,22 +60,6 @@ const contactForm = document.getElementById("contact-form");
 contactForm.addEventListener("submit", function (event) {
     event.preventDefault();
 });
-
-
-// Fonction asynchrone de récupération des données de la route works
-async function worksData() {
-
-    /* Si aucune donnée en mémoire: téléchargement et stockage des données,
-    sinon: écriture des données en JavaScript */
-    if (works === null) {
-        const swagger = await fetch("http://localhost:5678/api/works/");
-        works = await swagger.json();
-        const worksContent = JSON.stringify(works);
-        window.localStorage.setItem("localWorks", worksContent);
-    } else {
-        works = JSON.parse(works);
-    }
-}
 
 
 // Fonction de récupération de l'id et du nom des catégories
@@ -205,9 +190,6 @@ function worksDel() {
                             document.querySelectorAll(`[data-id="${btnId}"]`)
                                 .forEach(figure => figure.remove());
 
-                            // Purge des données en mémoire
-                            window.localStorage.removeItem("localWorks");
-
                             // Retour du focus sur la modale
                             modal.focus();
                         } else {
@@ -307,7 +289,6 @@ function worksAdd() {
                     modalGallery([work], modalBlock1);
 
                     window.alert("Projet ajouté avec succès");
-                    window.localStorage.removeItem("localWorks");
                     window.location.href = "#portfolio";
                 } else {
                     throw new Error("Une erreur est survenue : le projet n'a pas été ajouté");
@@ -506,7 +487,6 @@ function editMode() {
 
 
 // Appels de fonctions
-await worksData();
 worksGallery(works, gallery);
 filtersList();
 editMode();
